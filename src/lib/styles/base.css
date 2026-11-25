@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+/* hidden means hidden, whatever display it's been given */
+[hidden] {
+  display: none !important;
+}
+
 html {
   scroll-padding-top: calc(var(--bar-height) + var(--space-l));
   scrollbar-color: var(--text-muted) var(--bg);
