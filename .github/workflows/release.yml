@@ -45,6 +45,8 @@ jobs:
           package-manager-cache: false
       - run: npm ci
       - run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - name: Zip the site
         run: cd build && zip -qr ../site.zip .
       - name: Draft the release, attach the zip, then publish it
