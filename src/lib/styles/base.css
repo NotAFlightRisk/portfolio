@@ -99,6 +99,10 @@ pre {
   font-weight: var(--weight-strong);
   text-decoration: none;
   cursor: pointer;
+  transition:
+    background-color var(--quick) var(--ease),
+    color var(--quick) var(--ease),
+    box-shadow var(--quick) var(--ease);
 
   @media (hover: hover) {
     &:hover {
@@ -106,8 +110,10 @@ pre {
     }
   }
 
+  /* goes down the moment you press, comes back up in its own time */
   &:active {
     box-shadow: var(--button-shadow-pressed);
+    transition-duration: 0s;
   }
 
   &[aria-current] {
@@ -118,6 +124,11 @@ pre {
   &.raised {
     background: var(--surface);
     box-shadow: var(--panel-shadow);
+
+    /* white on a white panel vanishes, so it takes the tint instead */
+    .panel & {
+      background: var(--button-bg);
+    }
 
     @media (hover: hover) {
       &:hover {

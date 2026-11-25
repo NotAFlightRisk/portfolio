@@ -1,5 +1,7 @@
 title: Token Usage Dashboard
 category: other
+featured: true
+order: 7
 tagline: See where your Claude Code, Codex and OpenCode tokens go
 about: >-
   Ever wondered what your AI habit would cost at API prices? This turns your Claude Code, Codex and

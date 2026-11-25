@@ -43,6 +43,7 @@
   --tracking-title: -0.04em;
   --tracking-brand: -0.05em;
   --measure: 65ch;
+  --measure-wide: 80ch;
 
   --space-3xs: 0.125rem;
   --space-2xs: 0.25rem;
@@ -86,6 +87,8 @@
   --peek: 0.8s;
   --drift: 0.6s;
   --hover-zoom: 1.03;
+  --nudge: 0.125rem;
+  --pop: 1.2;
   --blink-every: 7s;
 }
 

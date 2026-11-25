@@ -9,7 +9,7 @@ type Shot = { alt: string; path?: string };
 
 type Entry = Pick<
   App,
-  'title' | 'category' | 'tagline' | 'about' | 'features' | 'tags' | 'site' | 'install'
+  'title' | 'category' | 'tagline' | 'about' | 'features' | 'tags' | 'order' | 'site' | 'install'
 > & {
   featured?: boolean;
   screenshots?: Shot[];

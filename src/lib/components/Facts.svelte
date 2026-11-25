@@ -10,16 +10,26 @@
 
   const facts = $derived(
     [
-      { icon: languageIcon(app.language ?? ''), label: 'Language', value: app.language },
-      { icon: License, label: 'Licence', value: app.licence },
-      { icon: Clock, label: 'Updated', value: app.updated && day(new Date(app.updated)) }
+      {
+        icon: languageIcon(app.language ?? ''),
+        label: 'Language',
+        hint: 'Built with',
+        value: app.language
+      },
+      { icon: License, label: 'Licence', hint: 'Licensed under', value: app.licence },
+      {
+        icon: Clock,
+        label: 'Updated',
+        hint: 'Last updated on',
+        value: app.updated && day(new Date(app.updated))
+      }
     ].filter(({ value }) => value)
   );
 </script>
 
 <dl>
-  {#each facts as { icon: Icon, label, value } (label)}
-    <div title={label}>
+  {#each facts as { icon: Icon, label, hint, value } (label)}
+    <div title="{hint} {value}">
       <dt><Icon role="img" aria-label={label} /></dt>
       <dd>{value}</dd>
     </div>

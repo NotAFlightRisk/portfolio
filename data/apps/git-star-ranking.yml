@@ -1,5 +1,7 @@
 title: git-star-ranking
 category: other
+featured: true
+order: 2
 tagline: Where any GitHub user, organisation or repo ranks by stars
 about: >-
   git-star-ranking ranks GitHub users, organisations and repos by stars, and tells you where you sit

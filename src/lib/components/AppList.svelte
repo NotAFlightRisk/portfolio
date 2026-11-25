@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { absolute } from '#lib/site.ts';
+  import { absolute, tagSlug } from '#lib/site.ts';
   import type { App } from '#lib/types.ts';
   import AppLinks from './AppLinks.svelte';
   import Facts from './Facts.svelte';
@@ -32,6 +32,11 @@
         <p>{app.tagline}</p>
         <Facts {app} />
         <div class="actions"><AppLinks {app} /></div>
+        <ul class="tags" aria-label="{app.title} tags">
+          {#each app.tags as tag}
+            <li><a href="/tags/{tagSlug(tag)}">#{tagSlug(tag)}</a></li>
+          {/each}
+        </ul>
       </div>
       <div class="thumb">
         {#if app.screenshots[0]}
@@ -93,6 +98,11 @@
     justify-items: start;
     gap: var(--space-xs);
 
+    @media (width >= 48rem) {
+      align-self: center;
+      gap: var(--space-s);
+    }
+
     & h2 {
       font-size: var(--text-h3);
     }
@@ -117,10 +127,35 @@
     }
   }
 
-  .actions {
+  .actions,
+  .tags {
     position: relative;
     z-index: 1;
+  }
+
+  .actions {
     margin-top: var(--space-2xs);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--space-s);
+    font-size: var(--text-small);
+
+    & a {
+      display: inline-block;
+      padding-block: var(--space-3xs);
+      color: var(--text-muted);
+      text-decoration: none;
+
+      @media (hover: hover) {
+        &:hover {
+          color: var(--text);
+          text-decoration: underline;
+        }
+      }
+    }
   }
 
   .thumb {

@@ -91,6 +91,7 @@
 
 <style>
   .carousel {
+    container-type: inline-size;
     display: grid;
     gap: var(--space-s);
     min-width: 0;
@@ -142,6 +143,13 @@
         box-shadow: var(--panel-shadow);
       }
     }
+
+    /* arrows and every dot won't both fit on a phone, and a swipe does the job */
+    @container (width < 30rem) {
+      &:has(.dots) > .button {
+        display: none;
+      }
+    }
   }
 
   .peek .controls {
@@ -150,6 +158,8 @@
 
   .dots {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--space-2xs);
 
     & button {

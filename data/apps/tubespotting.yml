@@ -1,6 +1,7 @@
 title: Tube Spotting
 category: data-visualisation
 featured: true
+order: 5
 tagline: A live map of every Tube train in London
 about: >-
   Tube Spotting shows every train on the Underground, Elizabeth line, DLR and Overground as it

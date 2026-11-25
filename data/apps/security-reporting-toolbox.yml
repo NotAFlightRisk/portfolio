@@ -1,5 +1,7 @@
 title: Security Reporting Toolbox
 category: other
+featured: true
+order: 6
 tagline: Tools for writing up a security vulnerability, all in one place
 about: >-
   Writing up a vulnerability turns into a load of little errands, like finding the right CWE,

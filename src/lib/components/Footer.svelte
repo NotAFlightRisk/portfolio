@@ -24,6 +24,7 @@
       {#each categories as { slug, nav } (slug)}
         <li><a href="/{slug}">{nav}</a></li>
       {/each}
+      <li><a href="/all">All apps</a></li>
       <li><a href="/tags">Tags</a></li>
       <li><a href="/api">API</a></li>
     </ul>

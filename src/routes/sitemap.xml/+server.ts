@@ -12,6 +12,7 @@ export const GET = async () => {
     .at(-1);
   const pages = [
     { loc: absolute('/'), lastmod: newest },
+    { loc: absolute('/all'), lastmod: newest },
     ...categories.map(({ slug }) => ({ loc: absolute(`/${slug}`), lastmod: newest })),
     ...all.map((app) => ({ loc: appUrl(app), lastmod: app.updated })),
     { loc: absolute('/tags'), lastmod: newest },

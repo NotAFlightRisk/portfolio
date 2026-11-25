@@ -30,6 +30,7 @@ export type App = Stats & {
   features: string[];
   tags: string[];
   featured: boolean;
+  order?: number;
   site?: string;
   install?: string;
   repo: string;

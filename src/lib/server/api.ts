@@ -22,6 +22,7 @@ export function apiApp(app: App) {
     tags: app.tags,
     category: { slug, title },
     featured: app.featured,
+    order: app.order ?? null,
     url: appUrl(app),
     site: app.site ?? null,
     repo: app.repo,

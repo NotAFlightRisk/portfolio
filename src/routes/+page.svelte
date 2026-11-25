@@ -30,35 +30,43 @@
 
 <section class="intro">
   <h1>Portfolio</h1>
-  <p>
-    I build free and open source apps that make hidden information easier to find, explore and
-    understand.
-  </p>
+  <div class="blurb">
+    <p>
+      I build free and open source apps that make hidden information easier to find, explore and
+      understand.
+    </p>
+    <a class="button raised" href="/all">
+      View all ({data.all.length})<span class="visually-hidden"> apps</span>
+      <Arrow aria-hidden="true" />
+    </a>
+  </div>
 </section>
 
-<Carousel items={data.featured} label="Featured apps">
-  {#snippet slide(app, i)}
-    <article class="feature">
-      <div class="copy">
-        <img class="logo" src={app.logo} alt="" width="80" height="80" />
-        <h2><a href={page(app)}>{app.title}</a></h2>
-        <p>{app.tagline}</p>
-        <AppLinks {app} />
-      </div>
-      <a class="frame" href={page(app)} tabindex="-1" aria-hidden="true">
-        <Browser {app} url={app.screenshots[0]?.url}>
-          {#if app.screenshots[0]}
-            <Shot
-              shot={app.screenshots[0]}
-              sizes="(width < 56rem) 92vw, 50rem"
-              priority={i === 0}
-            />
-          {/if}
-        </Browser>
-      </a>
-    </article>
-  {/snippet}
-</Carousel>
+<div class="featured panel">
+  <Carousel items={data.featured} label="Featured apps">
+    {#snippet slide(app, i)}
+      <article class="feature">
+        <div class="copy">
+          <img class="logo" src={app.logo} alt="" width="80" height="80" />
+          <h2><a href={page(app)}>{app.title}</a></h2>
+          <p>{app.tagline}</p>
+          <AppLinks {app} />
+        </div>
+        <a class="frame" href={page(app)} tabindex="-1" aria-hidden="true">
+          <Browser {app} url={app.screenshots[0]?.url}>
+            {#if app.screenshots[0]}
+              <Shot
+                shot={app.screenshots[0]}
+                sizes="(width < 56rem) 92vw, 50rem"
+                priority={i === 0}
+              />
+            {/if}
+          </Browser>
+        </a>
+      </article>
+    {/snippet}
+  </Carousel>
+</div>
 
 {#each data.shelves as shelf (shelf.slug)}
   <section class="shelf">
@@ -67,7 +75,7 @@
       <h2><a href="/{shelf.slug}">{shelf.title}</a></h2>
       <p>{shelf.description}</p>
       <a class="button raised all" href="/{shelf.slug}">
-        All {shelf.apps.length}<span class="visually-hidden">
+        View all ({shelf.apps.length})<span class="visually-hidden">
           {shelf.title.toLowerCase()} apps
         </span>
         <Arrow aria-hidden="true" />
@@ -91,17 +99,31 @@
       font-size: var(--text-title);
     }
 
-    & p {
-      max-width: var(--measure);
-      color: var(--text-muted);
-      font-size: var(--text-large);
-    }
-
     /* title on the left, the blurb beside it, so the first app sits higher up the screen */
     @media (width >= 64rem) {
       grid-template-columns: auto minmax(0, 1fr);
       align-items: center;
       column-gap: var(--space-2xl);
+    }
+  }
+
+  .blurb {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-s);
+
+    & p {
+      max-width: var(--measure);
+      color: var(--text-muted);
+      font-size: var(--text-large);
+    }
+  }
+
+  .featured {
+    padding: var(--space-s);
+
+    @media (width >= 56rem) {
+      padding: var(--space-l);
     }
   }
 
@@ -184,6 +206,8 @@
   .shelf {
     display: grid;
     gap: var(--space-m);
+    padding-top: var(--section-gap);
+    border-top: var(--separator);
   }
 
   .heading {

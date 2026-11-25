@@ -1,5 +1,7 @@
 title: Have I Been Trained On?
 category: other
+featured: true
+order: 9
 tagline: Find out if your writing ended up in AI training data
 about: >-
   If you've written anything online, it may well have been used to train an AI. Give this a link to
