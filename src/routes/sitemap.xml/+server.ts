@@ -1,5 +1,5 @@
 import { appUrl } from '#lib/server/api.ts';
-import { apps, categories } from '#lib/server/catalogue.ts';
+import { apps, categories, tags } from '#lib/server/catalogue.ts';
 import { absolute } from '#lib/site.ts';
 
 export const prerender = true;
@@ -14,6 +14,8 @@ export const GET = async () => {
     { loc: absolute('/'), lastmod: newest },
     ...categories.map(({ slug }) => ({ loc: absolute(`/${slug}`), lastmod: newest })),
     ...all.map((app) => ({ loc: appUrl(app), lastmod: app.updated })),
+    { loc: absolute('/tags'), lastmod: newest },
+    ...(await tags()).map(({ slug }) => ({ loc: absolute(`/tags/${slug}`), lastmod: newest })),
     { loc: absolute('/api'), lastmod: undefined }
   ];
   const urls = pages

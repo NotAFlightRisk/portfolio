@@ -155,7 +155,7 @@
     & button {
       display: grid;
       place-items: center;
-      width: var(--target);
+      width: var(--dot-target);
       height: var(--target);
       padding: 0;
       border: 0;

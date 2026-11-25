@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@iconify-json/simple-icons": "^1.2.102",
     "@iconify-json/tabler": "^1.2.47",
     "@sentry/browser": "^11.17.0",
     "@sentry/vite-plugin": "^11.17.0",

@@ -1,18 +1,19 @@
 title: Token Usage Dashboard
 category: other
-tagline: See where your Claude Code, Codex and OpenCode tokens went, read from the transcripts on your machine
+tagline: See where your Claude Code, Codex and OpenCode tokens go
 about: >-
-  Ever wondered where all your tokens are going, or what your AI habit would cost at API prices?
-  This reads your local Claude Code, Codex and OpenCode transcripts and turns them into a dashboard
-  of your whole usage history. It all stays on your machine, and the stats go into a local SQLite
-  database, so you keep the history even after the tools prune their old transcripts.
+  Ever wondered what your AI habit would cost at API prices? This turns your Claude Code, Codex and
+  OpenCode history into a dashboard, and it all stays on your machine. It keeps your history even
+  after the tools tidy away their old transcripts, too.
 features:
-  - A calendar heatmap of the past year, and daily totals stacked by tool or model
-  - The split between fresh input, output, cache reads and cache writes
-  - Which projects, providers and models your tokens went to
-  - Your Anthropic and OpenAI 5-hour and 7-day plan windows
-  - Recent sessions with a full token breakdown, and cost estimates at API rates
-  - One command to run it, and your transcripts never leave the machine
+  - The past year on a calendar, day by day
+  - Which projects, tools and models your tokens went on
+  - Where you're at with your Anthropic and OpenAI plan limits
+  - Up and running with one command
+tags:
+  - AI
+  - Developer tools
+  - Self-hosting
 install: npx token-usage-dashboard
 screenshots:
   - alt: Thirty days of usage at 7.4B tokens, with a calendar heatmap, plan windows and daily totals

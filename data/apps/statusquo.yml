@@ -1,19 +1,21 @@
 title: statusquo
 category: other
-tagline: GitHub, Cloudflare, npm and any other status pages you rely on, on one board with one RSS feed
+tagline: All the status pages you rely on, on one board
 about: >-
   If your app leans on GitHub, Cloudflare, npm and a payment provider, checking whether any of them
-  is having a bad morning means a lot of tabs. statusquo puts them on one board with what's broken
-  now, what broke recently and what's scheduled next. It doesn't probe anything itself, just reads
-  what each provider publishes, and the whole board lives in its URL, so there's nothing to sign up
-  for.
+  is having a bad morning means a lot of tabs. statusquo puts them on one board, with what's broken
+  now, what broke recently and what's planned next. There's nothing to sign up for, either.
 features:
-  - Up to 10 services per board, from a catalogue of over 140 or any status page address
-  - Live status, incident history with filters, and a maintenance calendar
-  - The URL is the whole config, so you can bookmark it, share it or edit it by hand
-  - Add feed.xml to any board to follow it in a feed reader
-  - Eight themes, like Nord, Solarized and Terminal, that ride along in the link
-  - Self-host it with Docker and pin one board as your homepage
+  - More than 100 services ready to add, or any status page you like
+  - Bookmark or share a board, as it all lives in the link
+  - An RSS feed for every board
+  - Eight themes, including Nord, Solarized and Terminal
+  - Run your own copy with Docker, with your board as the homepage
+tags:
+  - Self-hosting
+  - Monitoring
+  - Outages
+  - Developer tools
 site: https://statusquo.peng.ly
 screenshots:
   - path: /s/github,cloudflare,npm,stripe,anthropic,openai,vercel,discord,supabase,twilio

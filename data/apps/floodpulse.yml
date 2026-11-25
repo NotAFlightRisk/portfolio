@@ -1,19 +1,22 @@
 title: floodpulse
 category: data-visualisation
-tagline: Live river levels and flood warnings across England, every gauge against its own normal
+tagline: Keep an eye on river levels and flood warnings across England
 about: >-
-  floodpulse colours every stretch of England's rivers by its Environment Agency gauge, measured
-  against that gauge's own normal range, so a big river and a tiny brook compare fairly. Search for
-  your town or river to see how high it is against its record, what it's done over the last five
-  days and what's happening up and downstream. It isn't official though, so for anything that
-  matters, use the government's own flood service.
+  floodpulse shows whether each of England's rivers is running high or low right now, compared with
+  what's normal for that spot, so a big river and a little brook are easy to compare. It's good for
+  checking on the river near you, but it isn't official, so for anything that matters, use the
+  government's own flood service.
 features:
-  - Every river gauge in England, coloured by where it sits against its own normal
-  - Official flood warnings and alerts on top, with the areas they cover
-  - Pick a river to see every gauge along it, source to sea, on one chart
-  - Each gauge's level against its record, with five days of readings
-  - Rising stretches get dashes that walk downstream
-  - Tidal, groundwater and rain gauges you can switch on too
+  - A map of every river gauge in England, showing live water levels
+  - Official flood warnings and alerts, with the areas they cover
+  - Rivers that are rising stand out on the map
+  - Whole rivers on one chart, from source to sea
+  - How close each gauge is to its record level
+tags:
+  - UK
+  - Maps
+  - Realtime
+  - Environment
 site: https://floodpulse.peng.ly
 screenshots:
   - path: /

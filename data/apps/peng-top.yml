@@ -1,18 +1,21 @@
 title: peng-top
 category: self-hosted
-tagline: One small binary that shows your CPU, memory, disks, network, sensors and processes in a browser tab
+tagline: A system monitor for your browser, like htop with proper graphs
 about: >-
-  peng-top is a system monitor that lives in a browser tab, laid out in boxes like a terminal app
-  but with proper graphs. Run the binary (or the Docker image) and you get live CPU, memory, disk,
-  network, sensor and process views across eight tabs, all of it drivable from the keyboard. It
-  works on Linux, macOS and Windows, and only listens on localhost unless you tell it otherwise.
+  peng-top puts what your computer's up to in a browser tab, live: CPU, memory, disks, network,
+  sensors and processes. It's one small download for Linux, macOS or Windows, and it only listens on
+  your own machine unless you tell it otherwise.
 features:
-  - Live CPU, memory, disk, network, sensor and process views in one browser tab
-  - One small binary for Linux, macOS and Windows, or a multi-arch Docker image
-  - Keyboard shortcuts for everything, like 1 to 8 for tabs, / to filter and p to pause
-  - Themes including Catppuccin, Nord, Dracula and Gruvbox
-  - The raw readings as JSON, or as a live stream of server-sent events
-  - An optional login for when you open it up beyond your own machine
+  - Works entirely from the keyboard
+  - Themes like Catppuccin, Nord, Dracula and Gruvbox
+  - Raw readings as JSON or a live stream, for your own scripts
+  - An optional login if you want to check on it from another device
+  - A Docker image too, for watching a server
+tags:
+  - Self-hosting
+  - Monitoring
+  - Realtime
+  - Hardware
 install: curl -fsSL https://raw.githubusercontent.com/NotAFlightRisk/peng-top/main/scripts/install.sh | sh
 screenshots:
   - alt: The overview tab, with CPU and memory graphs, disk and network usage, and the busiest processes

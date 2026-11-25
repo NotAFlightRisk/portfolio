@@ -1,18 +1,18 @@
 title: Portainer Templates Extras
 category: self-hosted
-tagline: Tested Portainer templates for self-hosted apps - add one URL and deploy with a click
+tagline: Tested Portainer templates for self-hosted apps, added with one URL
 about: >-
-  These are 80 tested Portainer templates for self-hosted apps the big lists were missing. Paste one
-  URL into Portainer's settings and they all turn up in App Templates, ready to deploy with the form
-  left as it is (or just a password filled in). Every app comes with a Docker Compose file and a
-  docker run command too, for when you'd rather skip Portainer.
+  Portainer can deploy an app in a click from a template, but the big template lists leave out
+  plenty of good self-hosted apps. This fills in some of the gaps.
 features:
-  - Self-hosted apps like AFFiNE, AnythingLLM, CyberChef and copyparty, sorted by category
-  - One URL in Portainer's settings and they're all in your App Templates
-  - Each one deploys with Portainer's defaults, or just a password to fill in
-  - A compose file and a docker run command for every app, if you'd rather skip Portainer
-  - Smoke-tested in Docker whenever an app changes, and all of them again every Monday
-  - Request an app with a form, or add one yourself as a single JSON file
+  - Apps like AFFiNE, AnythingLLM, CyberChef and copyparty
+  - Each one deploys with Portainer's defaults, or just a password
+  - Every template's tested, and retested every week
+  - A Compose file and a docker run command for each, if you'd rather skip Portainer
+  - Ask for an app, or add one yourself
+tags:
+  - Self-hosting
+  - Docker
 site: https://portainer-templates-extras.peng.ly
 screenshots:
   - path: /

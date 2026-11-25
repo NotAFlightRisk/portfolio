@@ -1,19 +1,21 @@
 title: Awesome Privacy Guide
 category: research
-tagline: Private alternatives to the apps you use every day, from the Awesome Privacy list, in eight languages
+tagline: Private alternatives to the apps you use every day
 about: >-
-  This is an easier way to browse the Awesome Privacy list, with 406 privacy-respecting picks across
-  95 topics, each on its own page in eight languages. Look up the app you're using now, like Gmail,
-  Chrome or WhatsApp, and you'll see what the list suggests instead, with comparisons and an
-  evidence panel that only shows what's on record. It doesn't add apps of its own, and every page
-  links back to the original list.
+  Awesome Privacy Guide is an easier way to browse the Awesome Privacy list. Look up an app you use
+  now, like Gmail, Chrome or WhatsApp, and you'll see the private alternatives the list recommends,
+  with what's on record about each. It's in eight languages, and every page links back to the
+  original list.
 features:
-  - 406 private alternatives across 95 topics, searchable by the app you use now
-  - Every app, topic and swap gets its own page, in eight languages
-  - An evidence panel from the list, GitHub and ToS;DR that only shows what's on record
-  - Short guides on 2FA, password managers, VPNs and what to do after a data breach
-  - A toolkit builder for picking one app per job, shared as a link or Markdown
-  - Synced with the upstream list every morning
+  - Hundreds of private apps, sorted by what they're for
+  - Each app's audits and source code, where they're on record
+  - Short guides on 2FA, password managers and what to do after a breach
+  - Build your own privacy toolkit and share it as a link
+  - Updated from the original list every morning
+tags:
+  - Privacy
+  - Security
+  - Big tech
 site: https://awesomeprivacy.peng.ly
 screenshots:
   - path: /

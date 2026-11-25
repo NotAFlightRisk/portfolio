@@ -7,10 +7,7 @@
 
   let { categories }: { categories: Category[] } = $props();
 
-  const links = $derived([
-    ...categories.map(({ slug, nav }) => ({ label: nav, href: `/${slug}` })),
-    { label: 'API', href: '/api' }
-  ]);
+  const links = $derived(categories.map(({ slug, nav }) => ({ label: nav, href: `/${slug}` })));
   const current = (href: string) =>
     page.url.pathname === href || page.url.pathname.startsWith(`${href}/`) ? 'page' : undefined;
   let menu = $state<HTMLElement>();
