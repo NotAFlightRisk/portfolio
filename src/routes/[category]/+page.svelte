@@ -45,7 +45,7 @@
       </div>
       <div class="thumb">
         {#if app.screenshots[0]}
-          <Shot shot={app.screenshots[0]} sizes="16rem" />
+          <Shot shot={app.screenshots[0]} sizes="22rem" />
         {/if}
       </div>
     </li>
@@ -115,7 +115,7 @@
     transition: box-shadow var(--settle) var(--ease);
 
     @media (width >= 48rem) {
-      grid-template-columns: auto minmax(0, 1fr) 16rem;
+      grid-template-columns: auto minmax(0, 1fr) 22rem;
     }
 
     @media (hover: hover) {

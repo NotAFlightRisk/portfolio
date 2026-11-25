@@ -65,24 +65,26 @@
 </section>
 
 <section class="about">
-  <h2>What it does</h2>
-  <p>{app.about}</p>
-  <ul class="features">
+  <div class="story">
+    <h2>What it does</h2>
+    <p>{app.about}</p>
+    {#if app.install}
+      <h3>Get it running</h3>
+      <Command command={app.install} />
+    {/if}
+    {#if app.topics.length}
+      <ul class="topics" aria-label="Topics">
+        {#each app.topics as topic (topic)}
+          <li><a href="https://github.com/topics/{topic}">#{topic}</a></li>
+        {/each}
+      </ul>
+    {/if}
+  </div>
+  <ul class="features panel">
     {#each app.features as feature (feature)}
       <li><Check aria-hidden="true" />{feature}</li>
     {/each}
   </ul>
-  {#if app.install}
-    <h3>Get it running</h3>
-    <Command command={app.install} />
-  {/if}
-  {#if app.topics.length}
-    <ul class="topics" aria-label="Topics">
-      {#each app.topics as topic (topic)}
-        <li><a href="https://github.com/topics/{topic}">#{topic}</a></li>
-      {/each}
-    </ul>
-  {/if}
 </section>
 
 {#if data.more.length}
@@ -149,6 +151,16 @@
 
   .about {
     display: grid;
+    align-items: start;
+    gap: var(--space-xl) var(--space-2xl);
+
+    @media (width >= 64rem) {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    }
+  }
+
+  .story {
+    display: grid;
     gap: var(--space-m);
     max-width: var(--measure);
 
@@ -164,7 +176,8 @@
 
   .features {
     display: grid;
-    gap: var(--space-xs);
+    gap: var(--space-s);
+    padding: var(--space-l);
 
     & li {
       display: flex;
