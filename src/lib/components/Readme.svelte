@@ -44,7 +44,8 @@
   /* GitHub's HTML in here, so none of it has our scoped classes */
   .body :global {
     article {
-      max-width: var(--measure);
+      max-width: var(--measure-wide);
+      margin-inline: auto;
       padding: var(--space-l);
     }
 
