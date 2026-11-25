@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import AppList from '#lib/components/AppList.svelte';
   import type { App } from '#lib/types.ts';
   import Search from '~icons/tabler/search';
@@ -18,6 +19,9 @@
   let query = $state('');
   let category = $state('');
   let sort = $state('stars');
+  let ready = $state(false);
+
+  onMount(() => (ready = true));
 
   const words = (app: App) =>
     [app.title, app.name, app.tagline, app.language, ...app.tags].join(' ').toLowerCase();
@@ -36,11 +40,11 @@
     <label class="find">
       <Search aria-hidden="true" />
       <span class="visually-hidden">Search the apps</span>
-      <input type="search" placeholder="Search" bind:value={query} />
+      <input type="search" placeholder="Search" bind:value={query} disabled={!ready} />
     </label>
     <label>
       <span class="visually-hidden">Category</span>
-      <select bind:value={category}>
+      <select bind:value={category} disabled={!ready}>
         <option value="">All categories</option>
         {#each data.categories as { slug, title } (slug)}
           <option value={slug}>{title}</option>
@@ -49,7 +53,7 @@
     </label>
     <label>
       <span class="visually-hidden">Sort by</span>
-      <select bind:value={sort}>
+      <select bind:value={sort} disabled={!ready}>
         {#each sorts as { value, label } (value)}
           <option {value}>{label}</option>
         {/each}

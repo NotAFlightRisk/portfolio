@@ -9,7 +9,7 @@ export const load = async () => {
   const all = await apps();
   return {
     all,
-    featured: all.filter((app) => app.featured).sort((a, b) => place(a) - place(b) || 0),
+    featured: all.filter((app) => app.featured).sort((a, b) => place(a) - place(b)),
     shelves: categories.map((category) => ({
       ...category,
       apps: all.filter((app) => app.category === category.slug)
