@@ -33,6 +33,8 @@ No key needed, and CORS is open. The [API page](https://portfolio.peng.ly/api) h
 2. Drop its logo in `static/logos/<repo-name>.svg`
 3. List the pages to screenshot under `screenshots:`, then run `npm run screenshots <repo-name>`
 
+To put it in the carousel up top, add `featured: true`, plus `order: 1` (2, 3 and so on) if you want it in a particular spot. Anything without an order goes after the ones with.
+
 Stars, language, licence and topics come from GitHub when it builds, and it rebuilds every morning to keep up.
 
 The screenshots script drives a headless Chromium. If Playwright can't find one, point `CHROMIUM_PATH` at it, or run `npx playwright-core install chromium` first.

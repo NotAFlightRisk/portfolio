@@ -62,6 +62,12 @@ it('never gives a tag a page all to itself', () => {
   }
 });
 
+it('gives each ordered app a place of its own', () => {
+  const places = apps.flatMap((app) => app.order ?? []);
+  for (const place of places) expect(Number.isInteger(place) && place > 0, `${place}`).toBe(true);
+  expect(new Set(places).size).toBe(places.length);
+});
+
 it('spells each tag the same way everywhere', () => {
   const labels = new Set<string>(apps.flatMap((app) => app.tags));
   expect(new Set([...labels].map(tagSlug)).size).toBe(labels.size);

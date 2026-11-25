@@ -12,6 +12,13 @@
   icon: chart-dots-3
   description: Data that's hard to picture, drawn so you can see what's going on
 
+- slug: other
+  schema: DeveloperApplication
+  title: Other
+  nav: Other
+  icon: sparkles
+  description: Odds and ends that don't fit in anywhere else
+
 - slug: self-hosted
   schema: UtilitiesApplication
   title: Self-hosted
@@ -25,10 +32,3 @@
   nav: Mini tools
   icon: tool
   description: For the fiddly little jobs you'd rather not do by hand
-
-- slug: other
-  schema: DeveloperApplication
-  title: Other
-  nav: Other
-  icon: sparkles
-  description: Odds and ends that don't fit in anywhere else

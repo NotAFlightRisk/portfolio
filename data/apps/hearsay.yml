@@ -1,6 +1,7 @@
 title: hearsay
 category: data-visualisation
 featured: true
+order: 8
 tagline: Watch the internet's routing live on a 3D globe
 about: >-
   The internet's made of about 80,000 networks that each tell their neighbours which addresses they

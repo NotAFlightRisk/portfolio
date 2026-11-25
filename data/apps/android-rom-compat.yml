@@ -1,6 +1,7 @@
 title: Android ROM Compat
 category: research
 featured: true
+order: 3
 tagline: Which custom ROMs run on your Android phone, and how well
 about: >-
   Custom ROMs can keep an old phone going for years or get Google off it altogether, but finding one
