@@ -1,0 +1,30 @@
+title: Tube Spotting
+category: data-visualisation
+featured: true
+tagline: Every London Underground train on one live map, with the Elizabeth line, DLR and Overground too
+about: >-
+  Tube Spotting puts every Tube train in London on a live map, using TfL's own data. Tap a station
+  for its next departures platform by platform, or pick a train and follow it across town. Handy if
+  you're stood on a platform wondering where yours has got to, or if you just like watching trains.
+features:
+  - Every Tube train live on the map, with the Elizabeth line, DLR, Overground and trams too
+  - Tap a station for a countdown board of its next trains, platform by platform
+  - Follow a single train across London to see where it's off to
+  - A page per station with departures, planned closures, first and last trains and busy times
+  - Switch between the real geography and a layout like TfL's own Tube map
+  - Find your nearest station, without your location ever leaving your device
+site: https://tubespotting.peng.ly
+screenshots:
+  - path: /
+    alt: Every Tube, Elizabeth line and DLR train live on the map, with each line's status down the side
+    idle: false
+    wait: 10000
+  - path: /stations/kings-cross-st-pancras
+    alt: King's Cross St Pancras, with platform countdown boards and the planned closures for its lines
+    idle: false
+    wait: 8000
+  - path: /
+    alt: The same live map switched to real geography, with the Thames winding through the middle
+    click: 'button[aria-label="Tube map"]'
+    idle: false
+    wait: 10000

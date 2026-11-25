@@ -1,0 +1,59 @@
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { describe, expect, it } from 'vitest';
+import { parse } from 'yaml';
+
+const read = (path: string) => parse(readFileSync(path, 'utf8'));
+const categories: { slug: string }[] = read('data/categories.yml');
+const slugs = categories.map(({ slug }) => slug);
+const names = readdirSync('data/apps').map((file) => file.replace(/\.yml$/, ''));
+const apps = names.map((name) => ({ name, ...read(`data/apps/${name}.yml`) }));
+
+describe.each(apps)('$name', (app) => {
+  it('has the words every page needs', () => {
+    for (const key of ['title', 'tagline', 'about']) expect(app[key], key).toBeTypeOf('string');
+    expect(app.features.length).toBeGreaterThan(0);
+  });
+
+  it('sits in a category that exists', () => {
+    expect(slugs).toContain(app.category);
+  });
+
+  it('has a logo of its own', () => {
+    expect(existsSync(`static/logos/${app.name}.svg`)).toBe(true);
+  });
+
+  it('has a live address that is a proper URL', () => {
+    if (app.site) expect(new URL(app.site).protocol).toBe('https:');
+  });
+
+  it('has its screenshots on disk, each with a description', () => {
+    expect(app.screenshots?.length).toBeGreaterThan(0);
+    app.screenshots.forEach(({ alt }: { alt: string }, i: number) => {
+      expect(alt).toBeTypeOf('string');
+      const has = (theme: string) =>
+        [800, 1600].map((width) =>
+          existsSync(`static/screenshots/${app.name}/${i + 1}-${theme}-${width}.webp`)
+        );
+      expect(has('light')).toEqual([true, true]);
+      // a dark copy is optional, but never half of one
+      expect(new Set(has('dark')).size).toBe(1);
+    });
+  });
+});
+
+it('gives every category at least one app', () => {
+  for (const slug of slugs)
+    expect(
+      apps.some((app) => app.category === slug),
+      slug
+    ).toBe(true);
+});
+
+it('has a share card for the pages without a screenshot of their own', () => {
+  expect(existsSync('static/og.png')).toBe(true);
+});
+
+it('never names two apps the same', () => {
+  const titles = apps.map(({ title }) => title.toLowerCase());
+  expect(new Set(titles).size).toBe(titles.length);
+});

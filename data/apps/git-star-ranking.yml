@@ -1,0 +1,23 @@
+title: git-star-ranking
+category: other
+tagline: Where any GitHub user, organisation or repo ranks by stars, updated every six hours
+about: >-
+  Look up any GitHub account or repo to see where it ranks by stars and how near the top it sits, or
+  browse the top 10,000 users, organisations and repos. The rankings are rebuilt every six hours
+  from GitHub's own API. It picks up where @k0kubun's gitstar-ranking left off, after that shut down
+  in November 2026.
+features:
+  - Rankings for users, organisations and repos, rebuilt every six hours
+  - Any account's rank and top percentage, wherever it sits
+  - Embeddable rank badges for your README, made with a badge builder
+  - Covers the roughly 850,000 repos with 50 or more stars, recounting the big ones daily
+  - Sign in to be counted on the spot, or to take yourself off the list
+  - No extra GitHub permissions asked for, and the sign-in token's never stored
+site: https://git-star-ranking.com
+screenshots:
+  - path: /
+    alt: The top GitHub users, organisations and repos by stars, side by side under a search box
+  - path: /freeCodeCamp/freeCodeCamp
+    alt: freeCodeCamp's repo ranked fifth by stars, with a chart of where it sits among 857,000 repos
+  - path: /microsoft
+    alt: Microsoft's page at number one, with its top repos, a rank badge and its nearest rivals

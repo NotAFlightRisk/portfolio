@@ -1,0 +1,23 @@
+title: Color Code Convertor
+category: mini-tools
+tagline: Paste a colour in any format and get all seventeen others
+about: >-
+  Paste a colour in pretty much any format (hex, RGB, HSL, OKLCH, a CSS name or just a number) and
+  you get it back in all seventeen others, each ready to copy. There's a row of lighter and darker
+  shades to pick from, a preview on black, grey and white, and a picker for when you haven't got a
+  colour yet. It's quick, and it all runs in your browser.
+features:
+  - Hex, RGB, HSL, HWB, CMYK, LAB, OKLCH, Display P3 and more, all at once
+  - Ready-to-paste values for Android, Flutter and Swift
+  - The closest CSS colour name for whatever you paste
+  - A row of shades from dark to light, each one a click away
+  - An alpha slider, a colour picker and a random button for when you're stuck
+  - Every format explained further down the page
+site: https://color-code-convertor.peng.ly
+screenshots:
+  - path: '/#ff6b35'
+    alt: A coral hex code converted into every other format, with a row of shades and previews
+  - path: '/oklch/#oklch(0.72 0.16 165)'
+    alt: A green picked in OKLCH, with sliders for its lightness, chroma and hue
+  - path: '/css-names/#rebeccapurple'
+    alt: The CSS colour names page, turning rebeccapurple into its hex code

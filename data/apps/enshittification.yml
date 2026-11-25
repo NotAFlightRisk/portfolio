@@ -1,0 +1,25 @@
+title: The Enshittification Index
+category: research
+tagline: Every price rise, new ad, paywall and API lockdown at the big services, dated, sourced and archived
+about: >-
+  Every time a big service puts its prices up, adds ads or takes something away, it goes in here
+  with the date, a quote from the source and an archived copy in the Wayback Machine. That's 264
+  changes at 55 services so far, going back to 2007. A script checks every quote and number against
+  its source on each pull request and again every week, so it's a bit more than a list of grumbles.
+features:
+  - A page for every change that opens with the date, plus a timeline for each service
+  - Price history for every paid plan, with inflation alongside
+  - A league table of which subscriptions have gone up most since 2020
+  - Tick what you pay for and compare your bill with any year since 2010
+  - A days-since counter that resets whenever someone makes something worse
+  - All of it free under CC BY 4.0, as JSON, CSV or an Atom feed
+site: https://enshittification.peng.ly
+screenshots:
+  - path: /
+    alt: A caution sign, the days since big tech last made something worse, and the incident log
+  - path: /the-wall
+    alt: The wall, with every change at every service on a timeline and the worst offenders on top
+  - path: /netflix
+    alt: Netflix's page, with its latest change on a warning sign and fifteen years of changes below
+  - path: /prices
+    alt: The price league, ranking subscriptions by how much they've gone up since 2020 against inflation

@@ -1,0 +1,26 @@
+title: Android ROM Compat
+category: research
+featured: true
+tagline: Which Android ROMs run on your phone, what works on them, and whether the bootloader's locked for good
+about: >-
+  Pick your phone and see which custom ROMs officially support it, what actually works on each one,
+  and whether its maker lets you into the bootloader at all. It covers 802 devices across 14 ROMs,
+  including GrapheneOS, LineageOS, CalyxOS and /e/OS, official builds only. Anything nobody's
+  checked shows as unknown rather than a guess, and a report goes stale once the ROM moves to a newer
+  Android.
+features:
+  - Official ROM support for 802 devices, with the latest build for each
+  - What works on each phone and ROM, with gaps left blank rather than guessed
+  - Bootloader status by brand and device, wherever someone's checked
+  - Compare 14 ROMs on how they handle Google apps and whether the bootloader relocks
+  - Spot a mistake and fix it in a YAML file, or just fill in an issue form
+  - The whole dataset as static JSON, with no key and no rate limit
+site: https://android-rom-compat.peng.ly
+screenshots:
+  - path: /devices/google/pixel-8a/
+    alt: The Pixel 8a's page, with its bootloader status and what works on each of its 11 ROMs
+  - path: /roms/
+    alt: All 14 ROMs side by side in a table, from Google apps to whether the bootloader relocks
+    click: 'label:has(input[value="table"])'
+  - path: /compare/calyxos-vs-grapheneos/
+    alt: CalyxOS and GrapheneOS compared feature by feature, with the differences first

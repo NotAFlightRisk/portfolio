@@ -1,0 +1,31 @@
+title: Track the Gap
+category: data-visualisation
+tagline: Live London Underground headways, service gaps and train bunching, worked out from TfL predictions
+about: >-
+  TfL's status board can say "Good Service" while you've been stood on the platform for ten
+  minutes. Track the Gap rebuilds every train from TfL's live arrival predictions, measures the gap
+  to the next one, and checks it against the timetable for that stretch, direction and hour, on all
+  eleven Tube lines. A ratio near 1 is an even service, and 2 means your wait has doubled.
+features:
+  - A live board for all eleven Tube lines, sorted worst first
+  - Picks out service gaps and bunched trains as they happen
+  - Excess wait for each line, the same measure TfL publishes
+  - Line maps drawn to running time, so trains six minutes apart sit six minutes apart
+  - Branches kept apart from trunks, and shared track shown combined and per line
+  - Hover or tap any section for its headways and the trains on it
+site: https://track-the-gap.peng.ly
+screenshots:
+  - path: /
+    alt: The live board for every Tube line, worst first, with headways against the timetable and train spacing
+    idle: false
+    wait: 8000
+  - path: /northern-line
+    alt: The Northern line drawn to running time, splitting at Kennington, with service gaps picked out to Morden
+    scroll: 'section.direction text:text-is("Nine Elms")'
+    idle: false
+    wait: 8000
+  - path: /northern-line
+    alt: The Northern line's worst gaps right now, section by section against the timetable
+    scroll: table
+    idle: false
+    wait: 8000

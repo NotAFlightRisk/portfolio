@@ -1,0 +1,29 @@
+title: Security Reporting Toolbox
+category: other
+tagline: Find a CWE, look up CVEs and GHSAs, score CVSS, check EPSS and KEV, and build version ranges
+about: >-
+  Writing up a vulnerability turns into a load of little errands, like finding the right CWE,
+  scoring it in CVSS, checking KEV and working out how to write the affected versions. This puts
+  eight tools for those jobs in one place, each talking straight to the official source from your
+  browser, with no accounts or tracking. Paste whatever you've got (a CVE, a CVSS vector, a package
+  name or a link) and it sends you to the right one.
+features:
+  - CVE and GHSA lookup with CVE.org, NVD, GitHub and OSV side by side
+  - CVSS 3.1 and 4.0 calculator that decodes and checks vectors too
+  - CWE explorer with MITRE's mapping guidance, plus Top 25 and OWASP views
+  - EPSS and KEV checks for a whole list of CVEs in one go
+  - Affected and patched version ranges for GitHub advisories, tested against real releases
+  - Package lookup with PURLs, and a directory of who can assign a CVE for what
+site: https://security-reporting-toolbox.peng.ly
+screenshots:
+  - path: /cvss?vector=CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    alt: The CVSS 3.1 calculator scoring a network bug at 9.8 critical, with every metric laid out
+  - path: /cve?id=CVE-2021-44228
+    alt: Log4Shell looked up, with scores from CISA, NVD and GitHub side by side, plus EPSS and KEV
+    scroll: '#exploitation + *'
+    wait: 4000
+  - path: /cwe/79
+    alt: The CWE-79 cross-site scripting page, with MITRE's mapping advice and its parents and children
+  - path: /kev
+    alt: CISA's known exploited vulnerabilities catalogue, newest first, with filters for ransomware and date
+    wait: 4000

@@ -1,0 +1,36 @@
+title: fineprint
+category: research
+featured: true
+tagline: Compare VPNs on logging, jurisdiction, audits and payment, with a source for every claim
+about: >-
+  fineprint grades 227 VPN providers on 57 privacy criteria, like what they log, where they're
+  based, who's audited them and whether you can sign up without an email. Every grade follows the
+  same published rules and links to its source, all 6,005 of them. There are no sponsors or
+  affiliate links either, which makes a change from the "best VPN" lists that turn out to be adverts.
+features:
+  - 227 VPNs graded on 57 privacy criteria, with a source behind every claim
+  - Filter by must-haves like no logs, audits, RAM-only servers and anonymous signup
+  - Red flags like 5 Eyes jurisdiction, trackers in the app and funding review sites
+  - A page per provider with the full breakdown, its sources and a history of changes
+  - Browse as cards or a table, or pull everything from a free JSON API with no key
+site: https://fineprint.peng.ly
+screenshots:
+  - path: /
+    alt: VPN providers side by side as cards, each with its privacy checks and red flags
+    idle: false
+    wait: 2500
+  - path: /mullvad
+    alt: Mullvad's page, with grades for every section, its privacy checks and its one red flag
+  - path: /
+    alt: The comparison table narrowed to logging, showing what each VPN keeps about your traffic and DNS
+    click:
+      [
+        'button:has-text("Table")',
+        'text=Columns',
+        'label:has-text("Identity")',
+        'label:has-text("Jurisdiction")',
+        'text=Columns',
+        'h1'
+      ]
+    idle: false
+    wait: 2500

@@ -1,0 +1,29 @@
+title: Parallax
+category: mini-tools
+tagline: Merge logs from several machines and line up their clocks
+about: >-
+  When something breaks across a few machines, their logs never quite agree on what time it was.
+  Drop in up to six of them, nudge the ones whose clock drifted, and read the whole incident as one
+  timeline. It's all parsed in your browser tab, so nothing gets uploaded anywhere.
+features:
+  - Merge up to six sources and 250,000 lines into one timeline
+  - Nudge any log's clock to correct the skew between machines
+  - Reads ISO 8601, syslog, journalctl, access logs, Go and epoch times, or your own regex
+  - Stack traces stay attached to the line that threw them
+  - Parsed off the main thread, entirely in the browser, with nothing uploaded
+  - A sample incident to try it on before you bring your own
+site: https://parallax.peng.ly
+screenshots:
+  - path: /
+    alt: Three logs from one outage lined up, with the api clock pulled back 3m56s so the errors match
+    click:
+      - button.demo
+      - 'button.chip:has-text("Anchor")'
+      - '.line:has-text("02:14:01 +0000")'
+      - '.line:has-text("persisted id=88213")'
+      - 'button.chip:has-text("Anchor")'
+      - '.line:has-text("02:14:01 +0000")'
+      - '.line:has-text("41.220 ms")'
+  - path: /
+    alt: The sample incident before any nudging, with the api's log landing four minutes after everything else
+    click: button.demo

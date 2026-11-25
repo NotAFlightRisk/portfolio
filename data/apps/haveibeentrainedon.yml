@@ -1,0 +1,32 @@
+title: Have I Been Trained On?
+category: other
+tagline: Find out if your writing is in AI training data, by searching the open training sets for your own sentences
+about: >-
+  Paste a link to something you wrote and it looks for three of its sentences in the actual text of
+  the open AI training sets (C4, the Pile, RedPajama, Dolma and DCLM) and two of 2025's Common
+  Crawls. You get a straight answer for each, plus which models it trained and whether the copies
+  are on your site or someone else's. Other checkers guess from Common Crawl's index, but this
+  searches the text itself, using infini-gram.
+features:
+  - Searches five open training sets and two 2025 Common Crawls for your own sentences
+  - Match, no match or too new for each set, plus the models it trained
+  - Shows whether the copies it found are on your own site or someone else's
+  - Paste the text for pages it can't fetch, or a bare domain to sample 4 posts
+  - Skips any set that stopped before your page was published
+  - Keeps fingerprints of the sentences, never the text itself
+site: https://haveibeentrainedon.peng.ly
+screenshots:
+  - path: /
+    alt: The home page, asking for a link to something you wrote to check against AI training sets
+    hide: ['.human']
+    idle: false
+    wait: 3000
+  - path: /#sets-heading
+    alt: The six training sets it searches, from C4 and the Pile to 2025's Common Crawls
+    hide: ['.human']
+    idle: false
+    wait: 3000
+  - path: /about
+    alt: How it works, from picking three of your sentences to counting them in each set
+    idle: false
+    wait: 3000

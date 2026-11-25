@@ -1,0 +1,29 @@
+title: carbonara
+category: data-visualisation
+featured: true
+tagline: How clean Britain's electricity is right now, where, and when it'll be cleaner
+about: >-
+  carbonara shows you how much CO2 goes into each unit of Britain's electricity right now, which
+  fuels are behind it, and how that'll change across the country over the next 48 hours. It's all
+  from NESO's Carbon Intensity API. Pop in your postcode and it switches to your bit of the grid,
+  including the best time to put the washing machine on.
+features:
+  - A barometer for how clean the grid is right now, in grams of CO2 per kWh
+  - The fuel mix behind it, and how that's moved over the last 24 hours
+  - Say how long something runs for and it'll find the cleanest time to start it
+  - A map of the 14 regions you can play through the next 48 hours
+  - When it's usually cleanest, and how this time of year compares with every year since 2017
+  - Pick a region or enter a postcode and everything switches to your area
+site: https://carbonara.peng.ly
+screenshots:
+  - path: /
+    alt: How clean Britain's grid is right now on a barometer, next to the fuel mix behind it
+    wait: 3000
+  - path: /
+    alt: The 14 regions of the grid on a map, with a fortnight of carbon by time of day
+    scroll: 'svg[aria-label="Map of Great Britain by region"]'
+    wait: 3000
+  - path: /?region=13
+    alt: London's carbon forecast for the next 48 hours, with the cleanest time to start a three hour job
+    scroll: 'svg[role="slider"] >> text="low"'
+    wait: 3000
