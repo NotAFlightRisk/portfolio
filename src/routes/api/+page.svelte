@@ -24,7 +24,7 @@
   <dl class="endpoints">
     {#each endpoints as { path, what } (path)}
       <div class="panel">
-        <dt><a href={path}><code>{path}</code></a></dt>
+        <dt><a href={path} data-sveltekit-reload><code>{path}</code></a></dt>
         <dd>{what}</dd>
       </div>
     {/each}
