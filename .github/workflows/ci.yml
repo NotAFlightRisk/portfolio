@@ -1,0 +1,97 @@
+name: 🚦 CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  changes:
+    name: 🧭 changes
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      checks: ${{ steps.pick.outputs.checks }}
+    steps:
+      - name: Pick the checks this needs, or all of them on main
+        id: pick
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const everything = /^[^/]+\.(json|ts)$|^\.github\/workflows\/ci\.yml$/;
+            const code = /^(src|tests|scripts)\//;
+            const checks = {
+              format: ['🎨', 'npm run format:check', /^(?!static\/screenshots\/)/],
+              types: ['🔬', 'npm run check', code],
+              tests: ['🧪', 'npm test', /^(src|tests|data|static)\//],
+              build: ['🏗️', 'npm run build', /^(src|static|data)\//],
+            };
+
+            const pr = context.payload.pull_request;
+            const params = { ...context.repo, pull_number: pr?.number };
+            const files = pr ? await github.paginate(github.rest.pulls.listFiles, params) : [];
+            const needs = (paths) =>
+              !pr || files.some(({ filename }) => everything.test(filename) || paths.test(filename));
+            const wanted = Object.entries(checks).filter(([, [, , paths]]) => needs(paths));
+            core.setOutput('checks', wanted.map(([label, [emoji, run]]) => ({ label, emoji, run })));
+
+  check:
+    name: ${{ matrix.emoji }} ${{ matrix.label }}
+    needs: changes
+    if: needs.changes.outputs.checks != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJSON(needs.changes.outputs.checks) }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: ${{ matrix.run }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+  summary:
+    name: 📋 summary
+    runs-on: ubuntu-latest
+    needs: [changes, check]
+    if: always()
+    steps:
+      - name: Write the summary
+        env:
+          CHANGES: ${{ needs.changes.result }}
+          CHECKS: ${{ needs.check.result }}
+          RAN: ${{ join(fromJSON(needs.changes.outputs.checks || '[]').*.label, ', ') }}
+        run: |
+          icon() {
+            case "$1" in
+              success) echo "✅ passed" ;;
+              skipped) echo "⏭️ skipped" ;;
+              cancelled) echo "🚫 cancelled" ;;
+              failure) echo "❌ failed" ;;
+              *) echo "❔ $1" ;;
+            esac
+          }
+          {
+            echo "| Job | Result |"
+            echo "| --- | --- |"
+            echo "| 🧭 changes | $(icon "$CHANGES") |"
+            echo "| 🔍 checks${RAN:+ ($RAN)} | $(icon "$CHECKS") |"
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Fail if anything did
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        run: exit 1

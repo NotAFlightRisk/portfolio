@@ -1,0 +1,82 @@
+name: 🔖 Tag
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**.md'
+      - '.github/**'
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Which part to bump
+        type: choice
+        default: patch
+        options: [patch, minor, major]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tag
+  cancel-in-progress: false
+
+jobs:
+  tag:
+    name: 🔖 Next tag
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      HAS_BOT: ${{ secrets.BOT_PRIVATE_KEY != '' }}
+    outputs:
+      tag: ${{ steps.next.outputs.tag }}
+      feature: ${{ steps.next.outputs.feature }}
+    steps:
+      - uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
+        id: bot
+        if: env.HAS_BOT == 'true'
+        with:
+          client-id: Iv23liPIG7E12UlaQMaD
+          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
+          permission-contents: write
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Work out the next version
+        id: next
+        env:
+          PART: ${{ inputs.bump || 'patch' }}
+        run: |
+          latest=$(git tag --list '[0-9]*' | sort -V | tail -n1)
+          IFS=. read -r major minor patch <<< "${latest:-0.1.0}"
+          case "$PART" in
+            major) major=$((major + 1)); minor=0; patch=0 ;;
+            minor) minor=$((minor + 1)); patch=0 ;;
+            *)     patch=$((patch + 1)) ;;
+          esac
+          tag="$major.$minor.$patch"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "feature=$([ "$PART" = patch ] && echo false || echo true)" >> "$GITHUB_OUTPUT"
+          echo "### $tag" >> "$GITHUB_STEP_SUMMARY"
+      - name: Push it
+        env:
+          GH_TOKEN: ${{ steps.bot.outputs.token || github.token }}
+          TAG: ${{ steps.next.outputs.tag }}
+        run: |
+          sha=$(gh api "repos/$GITHUB_REPOSITORY/git/tags" -f tag="$TAG" -f message="$TAG" \
+            -f object="$GITHUB_SHA" -f type=commit -q .sha)
+          gh api "repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/tags/$TAG" -f sha="$sha" --silent
+
+  release:
+    name: 📦 Release
+    needs: tag
+    if: needs.tag.outputs.feature == 'true'
+    permissions:
+      contents: write
+    uses: ./.github/workflows/release.yml # zizmor: ignore[self-repository] actionlint can't read $/ yet
+    with:
+      tag: ${{ needs.tag.outputs.tag }}
+    secrets:
+      BOT_PRIVATE_KEY: ${{ secrets.BOT_PRIVATE_KEY }}

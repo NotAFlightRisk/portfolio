@@ -1,0 +1,71 @@
+name: 📦 Release
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        type: string
+        required: true
+    secrets:
+      BOT_PRIVATE_KEY:
+        required: false
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Tag to release
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    name: 📦 Build and publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      HAS_BOT: ${{ secrets.BOT_PRIVATE_KEY != '' }}
+    steps:
+      - uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
+        id: bot
+        if: env.HAS_BOT == 'true'
+        with:
+          client-id: Iv23liPIG7E12UlaQMaD
+          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
+          permission-contents: write
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.tag }}
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          package-manager-cache: false
+      - run: npm ci
+      - run: npm run build
+      - name: Zip the site
+        run: cd build && zip -qr ../site.zip .
+      - name: Draft the release, attach the zip, then publish it
+        env:
+          GH_TOKEN: ${{ steps.bot.outputs.token || github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          draft=$(gh release view "$TAG" --json isDraft -q .isDraft 2> /dev/null || true)
+          if [ "$draft" = false ]; then
+            echo "::error::$TAG is already out, and a published release can't be changed"
+            exit 1
+          fi
+          if [ -z "$draft" ]; then
+            since=$(gh release list --exclude-drafts --limit 1 --json tagName -q '.[0].tagName')
+            since=${since:-$(gh api "repos/$GH_REPO/tags" --paginate -q '.[].name' | sort -V | head -n1)}
+            [ "$since" = "$TAG" ] && since=
+            gh release create "$TAG" --draft --verify-tag --title "$TAG" \
+              --generate-notes ${since:+--notes-start-tag "$since"}
+          fi
+          gh release upload "$TAG" site.zip --clobber
+          gh release edit "$TAG" --draft=false --latest
+          url="$GITHUB_SERVER_URL/$GH_REPO/releases/tag/$TAG"
+          echo "📦 Released [$TAG]($url) with \`site.zip\`" >> "$GITHUB_STEP_SUMMARY"
