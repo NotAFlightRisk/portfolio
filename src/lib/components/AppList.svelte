@@ -119,6 +119,7 @@
 
   .actions {
     position: relative;
+    z-index: 1;
     margin-top: var(--space-2xs);
   }
 
