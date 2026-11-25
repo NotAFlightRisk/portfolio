@@ -9,11 +9,15 @@ export const site = {
   github: 'https://github.com/NotAFlightRisk',
   repo: 'https://github.com/NotAFlightRisk/portfolio',
   description:
-    "Every app I've built, free and open source, with screenshots, live links and the code on GitHub",
+    'Free and open source apps that make hidden information easier to find, explore and understand',
   color: '#febc20'
 };
 
 export const absolute = (path: string) => new URL(path, site.url).href;
+
+export const tagSlug = (tag: string) => tag.toLowerCase().replaceAll(' ', '-');
+
+export const list = (items: string[]) => new Intl.ListFormat('en-GB').format(items);
 
 export const shotSizes = { small: 800, large: 1600, ratio: 10 / 16 };
 

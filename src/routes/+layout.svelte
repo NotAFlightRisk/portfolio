@@ -3,6 +3,7 @@
   import font from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url';
   import '#lib/styles/tokens.css';
   import '#lib/styles/base.css';
+  import { onNavigate } from '$app/navigation';
   import { page } from '$app/state';
   import Breadcrumbs from '#lib/components/Breadcrumbs.svelte';
   import Footer from '#lib/components/Footer.svelte';
@@ -19,6 +20,17 @@
       noindex: true
     }
   );
+
+  // pages cross-fade where the browser can, same as a theme swap
+  onNavigate((navigation) => {
+    if (!document.startViewTransition) return;
+    return new Promise((resolve) => {
+      document.startViewTransition(async () => {
+        resolve();
+        await navigation.complete;
+      });
+    });
+  });
 </script>
 
 <svelte:head>
@@ -56,6 +68,7 @@
 
   main {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     align-content: start;
     gap: var(--section-gap);
     flex-grow: 1;

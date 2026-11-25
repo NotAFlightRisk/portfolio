@@ -1,7 +1,7 @@
 export type Theme = 'light' | 'dark';
 
 /** Paths without the `-<width>.webp` end, so each one has a small and a large copy */
-export type Screenshot = { alt: string; light: string; dark: string };
+export type Screenshot = { alt: string; light: string; dark: string; url?: string };
 
 export type Category = {
   slug: string;
@@ -28,6 +28,7 @@ export type App = Stats & {
   tagline: string;
   about: string;
   features: string[];
+  tags: string[];
   featured: boolean;
   site?: string;
   install?: string;
@@ -35,6 +36,8 @@ export type App = Stats & {
   logo: string;
   screenshots: Screenshot[];
 };
+
+export type Readme = { url: string; html: string };
 
 export type Crumb = { name: string; href: string };
 

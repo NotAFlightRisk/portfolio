@@ -4,19 +4,16 @@
   import Browser from '#lib/components/Browser.svelte';
   import Carousel from '#lib/components/Carousel.svelte';
   import Command from '#lib/components/Command.svelte';
+  import Facts from '#lib/components/Facts.svelte';
   import JsonLd from '#lib/components/JsonLd.svelte';
+  import Readme from '#lib/components/Readme.svelte';
   import Shot from '#lib/components/Shot.svelte';
+  import TagList from '#lib/components/TagList.svelte';
   import { absolute, shotSizes, site } from '#lib/site.ts';
   import Check from '~icons/tabler/check';
-  import Code from '~icons/tabler/code';
-  import Clock from '~icons/tabler/clock';
-  import License from '~icons/tabler/license';
 
   let { data } = $props();
   const app = $derived(data.app);
-
-  const date = (iso: string) =>
-    new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 
   const software = $derived({
     '@context': 'https://schema.org',
@@ -32,7 +29,7 @@
     softwareHelp: `${app.repo}#readme`,
     license: app.licence && `https://spdx.org/licenses/${app.licence}`,
     dateModified: app.updated,
-    keywords: app.topics.join(', '),
+    keywords: app.tags.join(', '),
     sameAs: [app.repo],
     author: { '@type': 'Person', name: site.author.name, url: site.author.url }
   });
@@ -46,17 +43,13 @@
     <h1>{app.title}</h1>
     <p class="tagline">{app.tagline}</p>
     <AppLinks {app} />
-    <ul class="facts">
-      {#if app.language}<li><Code aria-hidden="true" />{app.language}</li>{/if}
-      {#if app.licence}<li><License aria-hidden="true" />{app.licence} licence</li>{/if}
-      {#if app.updated}<li><Clock aria-hidden="true" />Updated {date(app.updated)}</li>{/if}
-    </ul>
+    <Facts {app} />
   </div>
 
   {#if app.screenshots.length}
     <Carousel items={app.screenshots} label="Screenshots of {app.title}">
       {#snippet slide(shot, i)}
-        <Browser site={app.site}>
+        <Browser {app} url={shot.url}>
           <Shot {shot} sizes="(width < 64rem) 92vw, 52rem" priority={i === 0} />
         </Browser>
       {/snippet}
@@ -72,13 +65,7 @@
       <h3>Get it running</h3>
       <Command command={app.install} />
     {/if}
-    {#if app.topics.length}
-      <ul class="topics" aria-label="Topics">
-        {#each app.topics as topic (topic)}
-          <li><a href="https://github.com/topics/{topic}">#{topic}</a></li>
-        {/each}
-      </ul>
-    {/if}
+    <TagList tags={app.tags.map((title) => ({ title }))} />
   </div>
   <ul class="features panel">
     {#each app.features as feature (feature)}
@@ -86,6 +73,8 @@
     {/each}
   </ul>
 </section>
+
+<Readme readme={data.readme} />
 
 {#if data.more.length}
   <section class="more">
@@ -128,25 +117,6 @@
   .tagline {
     color: var(--text-muted);
     font-size: var(--text-large);
-  }
-
-  .facts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2xs) var(--space-m);
-    color: var(--text-muted);
-    font-size: var(--text-small);
-
-    & li {
-      display: flex;
-      align-items: center;
-      gap: var(--space-2xs);
-    }
-
-    & :global(svg) {
-      width: var(--icon-small);
-      height: var(--icon-small);
-    }
   }
 
   .about {
@@ -193,28 +163,6 @@
       border-radius: 50%;
       background: var(--accent);
       color: var(--on-accent);
-    }
-  }
-
-  .topics {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2xs) var(--space-s);
-    font-size: var(--text-small);
-
-    & a {
-      display: inline-flex;
-      align-items: center;
-      min-height: var(--icon);
-      color: var(--text-muted);
-      text-decoration: none;
-
-      @media (hover: hover) {
-        &:hover {
-          color: var(--text);
-          text-decoration: underline;
-        }
-      }
     }
   }
 

@@ -33,6 +33,7 @@
 
   pre {
     flex: 1;
+    contain: inline-size;
     margin: 0;
     padding-block: var(--space-xs);
     overflow-x: auto;

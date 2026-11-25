@@ -11,19 +11,20 @@ type Repo = {
 };
 
 const cache = new Map<string, Promise<Stats>>();
-const headers: HeadersInit = {
-  accept: 'application/vnd.github+json',
-  ...(process.env.GITHUB_TOKEN && { authorization: `Bearer ${process.env.GITHUB_TOKEN}` })
-};
+const token = process.env.GITHUB_TOKEN;
 
 // a failed fetch fails the build, so the live site keeps yesterday's numbers rather than none
-async function fetchStats(name: string): Promise<Stats> {
-  const response = await fetch(`https://api.github.com/repos/${site.owner}/${name}`, {
-    headers,
+export async function ask(path: string, accept = 'application/vnd.github+json') {
+  const response = await fetch(`https://api.github.com/repos/${site.owner}/${path}`, {
+    headers: { accept, ...(token && { authorization: `Bearer ${token}` }) },
     signal: AbortSignal.timeout(15_000)
   });
-  if (!response.ok) throw new Error(`GitHub said ${response.status} for ${name}`);
-  const repo: Repo = await response.json();
+  if (!response.ok) throw new Error(`GitHub said ${response.status} for ${path}`);
+  return response;
+}
+
+async function fetchStats(name: string): Promise<Stats> {
+  const repo: Repo = await (await ask(name)).json();
   return {
     stars: repo.stargazers_count,
     language: repo.language ?? undefined,

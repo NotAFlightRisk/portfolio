@@ -19,6 +19,7 @@ export function apiApp(app: App) {
     tagline: app.tagline,
     about: app.about,
     features: app.features,
+    tags: app.tags,
     category: { slug, title },
     featured: app.featured,
     url: appUrl(app),

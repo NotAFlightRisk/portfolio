@@ -91,9 +91,14 @@
   }
 
   pre {
+    contain: inline-size;
     margin: 0;
     padding: var(--space-m);
     overflow-x: auto;
     font-size: var(--text-small);
+  }
+
+  code {
+    overflow-wrap: anywhere;
   }
 </style>

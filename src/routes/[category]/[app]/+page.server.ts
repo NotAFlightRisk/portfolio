@@ -1,5 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { apps, category } from '#lib/server/catalogue.ts';
+import { readme } from '#lib/server/readme.ts';
 import { shotSizes } from '#lib/site.ts';
 
 export const entries = async () =>
@@ -18,6 +19,7 @@ export const load = async ({ params }) => {
   return {
     app,
     category: section,
+    readme: await readme(app.name),
     // the next ones first, so they all get a look-in
     more: [...siblings.slice(at + 1), ...siblings.slice(0, at)],
     crumbs: [

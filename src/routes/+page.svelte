@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
   import AppCard from '#lib/components/AppCard.svelte';
   import AppLinks from '#lib/components/AppLinks.svelte';
   import Browser from '#lib/components/Browser.svelte';
@@ -8,14 +7,11 @@
   import JsonLd from '#lib/components/JsonLd.svelte';
   import Shot from '#lib/components/Shot.svelte';
   import { absolute } from '#lib/site.ts';
-  import Dice from '~icons/tabler/dice-5';
   import Arrow from '~icons/tabler/arrow-right';
 
   let { data } = $props();
 
-  const stars = $derived(data.all.reduce((sum, app) => sum + app.stars, 0));
   const page = (app: { category: string; name: string }) => `/${app.category}/${app.name}`;
-  const surprise = () => goto(page(data.all[Math.floor(Math.random() * data.all.length)]));
 
   const list = $derived({
     '@context': 'https://schema.org',
@@ -35,12 +31,9 @@
 <section class="intro">
   <h1>Portfolio</h1>
   <p>
-    Every app I've built, all {data.all.length} of them. They're free, open source and mostly live on
-    peng.ly, with {stars} stars on GitHub between them.
+    I build free and open source apps that make hidden information easier to find, explore and
+    understand.
   </p>
-  <button class="button raised" type="button" onclick={surprise}>
-    <Dice aria-hidden="true" /> Show me a random one
-  </button>
 </section>
 
 <Carousel items={data.featured} label="Featured apps">
@@ -53,7 +46,7 @@
         <AppLinks {app} />
       </div>
       <a class="frame" href={page(app)} tabindex="-1" aria-hidden="true">
-        <Browser site={app.site}>
+        <Browser {app} url={app.screenshots[0]?.url}>
           {#if app.screenshots[0]}
             <Shot
               shot={app.screenshots[0]}
@@ -109,10 +102,6 @@
       grid-template-columns: auto minmax(0, 1fr);
       align-items: center;
       column-gap: var(--space-2xl);
-
-      & h1 {
-        grid-row: span 2;
-      }
     }
   }
 
