@@ -1,18 +1,19 @@
 title: Track the Gap
 category: data-visualisation
-tagline: Live London Underground headways, service gaps and train bunching, worked out from TfL predictions
+tagline: How the Tube's really running right now, line by line
 about: >-
   TfL's status board can say "Good Service" while you've been stood on the platform for ten
-  minutes. Track the Gap rebuilds every train from TfL's live arrival predictions, measures the gap
-  to the next one, and checks it against the timetable for that stretch, direction and hour, on all
-  eleven Tube lines. A ratio near 1 is an even service, and 2 means your wait has doubled.
+  minutes. Track the Gap works out the real gaps between trains on every Tube line, live, and checks
+  them against the timetable.
 features:
-  - A live board for all eleven Tube lines, sorted worst first
-  - Picks out service gaps and bunched trains as they happen
-  - Excess wait for each line, the same measure TfL publishes
-  - Line maps drawn to running time, so trains six minutes apart sit six minutes apart
-  - Branches kept apart from trunks, and shared track shown combined and per line
-  - Hover or tap any section for its headways and the trains on it
+  - Every Tube line ranked by how well it's running, worst first
+  - Spots big gaps and bunched-up trains as they happen
+  - Extra waiting time for each line, measured the way TfL does it
+  - A diagram of each line showing where the gaps are
+tags:
+  - UK
+  - Transport
+  - Realtime
 site: https://track-the-gap.peng.ly
 screenshots:
   - path: /

@@ -3,32 +3,32 @@
   title: Research
   nav: Research
   icon: microscope
-  description: Hand-checked data on VPNs, Android ROMs, data exports and services going downhill, with a source for every claim
+  description: The digging done for you, with sources to back it up
 
 - slug: data-visualisation
   schema: ReferenceApplication
   title: Data visualisation
   nav: Data viz
   icon: chart-dots-3
-  description: Live trains, rivers, routing tables and the electricity grid, drawn as maps and charts you can poke at
+  description: Data that's hard to picture, drawn so you can see what's going on
 
 - slug: self-hosted
   schema: UtilitiesApplication
   title: Self-hosted
   nav: Self-hosted
   icon: server-2
-  description: Things to run on your own box, for watching it, patching it and putting apps on it
+  description: Tools to make running your own server a bit easier
 
 - slug: mini-tools
   schema: UtilitiesApplication
   title: Handy mini tools
   nav: Mini tools
   icon: tool
-  description: Little single-job tools for colour codes, messy logs and SteelSeries mice
+  description: For the fiddly little jobs you'd rather not do by hand
 
 - slug: other
   schema: DeveloperApplication
   title: Other
   nav: Other
   icon: sparkles
-  description: Odds and ends, like GitHub star rankings, a security reporting toolbox and a check for your writing in AI training sets
+  description: Odds and ends that don't fit in anywhere else

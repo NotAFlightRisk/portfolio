@@ -1,18 +1,20 @@
 title: The Enshittification Index
 category: research
-tagline: Every price rise, new ad, paywall and API lockdown at the big services, dated, sourced and archived
+tagline: A dated, sourced record of big tech making things worse
 about: >-
-  Every time a big service puts its prices up, adds ads or takes something away, it goes in here
-  with the date, a quote from the source and an archived copy in the Wayback Machine. That's 264
-  changes at 55 services so far, going back to 2007. A script checks every quote and number against
-  its source on each pull request and again every week, so it's a bit more than a list of grumbles.
+  Prices go up, ads creep in, and features you liked end up behind a paywall. The Enshittification
+  Index logs those changes at the big services back to 2007, each with the date, a quote from the
+  source and an archived copy. Every quote's rechecked against its source each week, so it's a bit
+  more than a list of grumbles.
 features:
-  - A page for every change that opens with the date, plus a timeline for each service
-  - Price history for every paid plan, with inflation alongside
-  - A league table of which subscriptions have gone up most since 2020
-  - Tick what you pay for and compare your bill with any year since 2010
-  - A days-since counter that resets whenever someone makes something worse
-  - All of it free under CC BY 4.0, as JSON, CSV or an Atom feed
+  - Price history for every paid plan, next to inflation
+  - The subscriptions that have gone up most since 2020
+  - Compare what you pay now with any year since 2010
+  - A count of the days since big tech last made something worse
+  - All of it free to reuse, with a feed for new changes
+tags:
+  - Big tech
+  - Open data
 site: https://enshittification.peng.ly
 screenshots:
   - path: /

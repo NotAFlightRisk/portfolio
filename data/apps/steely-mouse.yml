@@ -1,18 +1,18 @@
 title: Steely Mouse
 category: mini-tools
-tagline: Set up your SteelSeries mouse's DPI, polling rate, RGB lighting and buttons from a browser tab
+tagline: Change your SteelSeries mouse's DPI, lighting and buttons
 about: >-
-  Steely Mouse is a small web app for setting up SteelSeries mice, built on the rivalcfg project. It
-  runs on your own machine, talks to the mouse over USB, and gives you a proper settings page in a
-  browser tab instead of a pile of command-line flags. The controls come from rivalcfg's own device
-  profiles, so a newly supported mouse should usually just work.
+  Steely Mouse gives your SteelSeries mouse a proper settings page, rather than a pile of
+  command-line flags. It runs on your own computer and works with any mouse the rivalcfg project
+  supports, and new ones usually just work as soon as they're added.
 features:
-  - DPI stages, polling rate, lighting (gradients too), button mapping and sleep timers
-  - Save to the mouse's onboard memory so your settings survive a reboot
-  - A reapply switch for the newer mice that forget their colours when they nod off
-  - A demo mode with a pretend mouse, for a look without one plugged in
-  - Single binaries for Linux, macOS and Windows, or pipx, Nix and Docker
-  - Only listens on localhost by default, since anyone on the port can retune your mouse
+  - Saves to the mouse itself, so your settings stick after a reboot
+  - Gradient lighting, not just solid colours
+  - Brings your colours back on newer mice that forget them when they nod off
+  - A demo mode to try it without a mouse plugged in
+  - One download for Linux, macOS or Windows
+tags:
+  - Hardware
 install: pipx install git+https://github.com/NotAFlightRisk/steely-mouse
 screenshots:
   - alt: Five DPI presets for an Aerox 3 Wireless as sliders, with the polling rate underneath

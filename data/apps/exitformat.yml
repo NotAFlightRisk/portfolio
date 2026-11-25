@@ -1,18 +1,19 @@
 title: Exit Format
 category: research
-tagline: How to get your data out of online services, what formats you get, and where you can take it
+tagline: How to take your data with you when you leave an app
 about: >-
   Exporting from an app rarely gets you everything, and it's nicer to find that out before you
-  leave. Exit Format covers every way out of 53 apps and services (notes, password managers and 2FA
-  apps so far), what's in each export, what gets left behind and which apps can open the files.
-  There are 141 guides for moving between them, and steps for closing your account once you're out.
+  leave. Exit Format covers every way out of notes apps, password managers and 2FA apps so far, and
+  where you can go next.
 features:
-  - Every export option for each service, with the formats you get and what they leave out
-  - 141 move guides showing how much of your data carries over and what's lost
-  - A page for each of 94 file formats, listing every app that reads or writes it
-  - How to delete your account and data once you've moved
-  - Most fixes are a few lines of YAML, and CI points out mistakes down to the line
-  - All the data as JSON, with a JSON Schema for each file type
+  - What's in each export, and what gets left behind
+  - Guides for moving between apps, showing what comes with you
+  - Every app that can open a given file format
+  - How to close your account once you're out
+  - The data's open for anyone to build on
+tags:
+  - Privacy
+  - Open data
 site: https://exitformat.peng.ly
 screenshots:
   - path: /

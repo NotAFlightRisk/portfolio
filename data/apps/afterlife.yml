@@ -1,18 +1,18 @@
 title: Hacker Afterlife
 category: data-visualisation
-tagline: Every link that made Hacker News since 2007, checked to see which still work, which moved and which died
+tagline: Dead links on Hacker News since 2007, with archived copies
 about: >-
-  People still read old Hacker News threads, but plenty of the links at the top don't work any more.
-  This checks the link on every story with 100 or more points, plus each day's top 30, and sorts
-  over 250,000 of them into alive, moved, dead, lands elsewhere or can't tell. About 3 in 10 of the
-  links from 2007 are dead now, and the ones that died come with their Wayback Machine copy.
+  Old Hacker News threads still get read, but plenty of the links at the top of them don't work any
+  more. Hacker Afterlife has checked over 250,000 of them, and about 3 in 10 from 2007 are dead now.
+  Where a link has died, it points you to the Wayback Machine's copy instead.
 features:
-  - Every story drawn as one dot by the month it was posted, coloured by what became of it
-  - A strict idea of dead, with the odd cases kept apart so you can judge them yourself
-  - Wayback Machine copies for the links that died
-  - HN's top stories from 5, 10 and 15 years ago today, plus an RSS feed of ten years ago
-  - Look up any thread or link, browse the graveyard, or see how a whole domain's doing
-  - Every verdict in one CSV, free under CC BY 4.0
+  - Check whether any old thread's link still works
+  - The front page from 5, 10 and 15 years ago today
+  - See how well links to any website have lasted
+  - Every result free to download and reuse
+tags:
+  - Open data
+  - Internet
 site: https://afterlife.peng.ly
 screenshots:
   - path: /

@@ -1,19 +1,20 @@
 title: Security Reporting Toolbox
 category: other
-tagline: Find a CWE, look up CVEs and GHSAs, score CVSS, check EPSS and KEV, and build version ranges
+tagline: Tools for writing up a security vulnerability, all in one place
 about: >-
   Writing up a vulnerability turns into a load of little errands, like finding the right CWE,
-  scoring it in CVSS, checking KEV and working out how to write the affected versions. This puts
-  eight tools for those jobs in one place, each talking straight to the official source from your
-  browser, with no accounts or tracking. Paste whatever you've got (a CVE, a CVSS vector, a package
-  name or a link) and it sends you to the right one.
+  scoring it in CVSS and working out which versions are affected. This puts the tools for those
+  jobs in one place, each going straight to the official source, with no accounts or tracking.
 features:
-  - CVE and GHSA lookup with CVE.org, NVD, GitHub and OSV side by side
-  - CVSS 3.1 and 4.0 calculator that decodes and checks vectors too
-  - CWE explorer with MITRE's mapping guidance, plus Top 25 and OWASP views
-  - EPSS and KEV checks for a whole list of CVEs in one go
-  - Affected and patched version ranges for GitHub advisories, tested against real releases
-  - Package lookup with PURLs, and a directory of who can assign a CVE for what
+  - Look up any CVE in CVE.org, NVD, GitHub and OSV side by side
+  - A CVSS 3.1 and 4.0 calculator that explains any score you paste in
+  - Signs of exploitation for a whole list of CVEs in one go
+  - Get the affected versions right for a GitHub advisory
+  - Find out who can give your bug a CVE
+tags:
+  - Security
+  - GitHub
+  - Developer tools
 site: https://security-reporting-toolbox.peng.ly
 screenshots:
   - path: /cvss?vector=CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H

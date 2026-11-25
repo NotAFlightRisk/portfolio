@@ -1,17 +1,19 @@
 title: Parallax
 category: mini-tools
-tagline: Merge logs from several machines and line up their clocks
+tagline: Merge logs from several machines into one timeline
 about: >-
   When something breaks across a few machines, their logs never quite agree on what time it was.
-  Drop in up to six of them, nudge the ones whose clock drifted, and read the whole incident as one
-  timeline. It's all parsed in your browser tab, so nothing gets uploaded anywhere.
+  Parallax lines them up so you can read the whole incident in order. It all happens in your
+  browser, so your logs never get uploaded anywhere.
 features:
-  - Merge up to six sources and 250,000 lines into one timeline
-  - Nudge any log's clock to correct the skew between machines
-  - Reads ISO 8601, syslog, journalctl, access logs, Go and epoch times, or your own regex
-  - Stack traces stay attached to the line that threw them
-  - Parsed off the main thread, entirely in the browser, with nothing uploaded
-  - A sample incident to try it on before you bring your own
+  - Nudge a drifted clock back into line
+  - Reads syslog, journalctl, access logs and more, or a format of your own
+  - Stack traces stay with the error they belong to
+  - Copes with up to six logs and 250,000 lines at once
+  - A sample outage to try it on first
+tags:
+  - Developer tools
+  - Outages
 site: https://parallax.peng.ly
 screenshots:
   - path: /

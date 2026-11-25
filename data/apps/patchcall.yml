@@ -1,19 +1,22 @@
 title: Patchcall
 category: self-hosted
-tagline: Security advisories for the apps you self-host, flagged only when there's a fix for the version you run
+tagline: Security alerts for your self-hosted apps, only when there's a fix
 about: >-
-  Patchcall looks at the containers on your Docker host, works out which app and version each one
-  is, and checks that app's own security advisories on GitHub. You only hear from it when an
-  advisory catches your version and there's a fixed release to move to, and the rest of the time it
-  keeps quiet. Image scanners mostly flag base-image CVEs and miss advisories for apps like Jellyfin
-  or Immich, and update checkers can't tell a security fix from a new emoji picker.
+  Image scanners mostly nag about the base image and miss the advisories for apps like Jellyfin or
+  Immich, and update checkers can't tell a security fix from a new emoji picker. Patchcall checks
+  the apps on your Docker host against their own security advisories, and only speaks up when your
+  version's affected and there's a fix to move to.
 features:
-  - One alert per fix you actually need, naming the version to move to
-  - Knows the 50-odd most popular self-hosted images, and reads image labels for the rest
-  - Says so when it can't tell your version, rather than calling it clear
-  - Marks anything on CISA's list of known exploited vulnerabilities
-  - Alerts by ntfy, Gotify, Apprise, email or webhook, plus an RSS feed
-  - Checks apps outside Docker from a short YAML list
+  - One alert per fix you need, naming the version to move to
+  - Flags anything that's known to be exploited in the wild
+  - Says so when it can't tell your version, rather than calling it safe
+  - Alerts by ntfy, Gotify, email, webhook and more
+  - Can check apps outside Docker too
+tags:
+  - Self-hosting
+  - Security
+  - Monitoring
+  - Docker
 site: https://patchcall.peng.ly
 install: |-
   curl -fsSLO https://raw.githubusercontent.com/NotAFlightRisk/patchcall/main/docker/compose.yaml

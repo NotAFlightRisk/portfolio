@@ -1,20 +1,23 @@
 title: hearsay
 category: data-visualisation
 featured: true
-tagline: Watch the internet's routing live on a globe, with leaks, hijacks and outages picked out as they happen
+tagline: Watch the internet's routing live on a 3D globe
 about: >-
   The internet's made of about 80,000 networks that each tell their neighbours which addresses they
-  can reach, and as hardly anyone checks what gets passed on, it more or less runs on hearsay. This
-  draws that chatter on a 3D globe as it happens, sampled from the 800 or so routers feeding RIPE's
-  RIS Live, and points out anything odd, like a possible route leak or a sudden pile of withdrawals.
-  Network nerds will get the most out of it, but the globe's fun to watch either way.
+  can reach, and hardly anyone checks what gets passed on, so it more or less runs on hearsay. This
+  draws that chatter as it happens and points out anything that looks off. Network nerds will get
+  the most out of it, but the globe's fun to watch either way.
 features:
-  - Live BGP updates drawn hop by hop across a 3D globe as they happen
-  - Flags possible leaks, prefixes changing hands, flapping, bogons and silly prepending
-  - Confirmed outages, leaks and hijacks from Cloudflare Radar and IODA
+  - Flags possible route leaks and hijacks as they happen
+  - Confirmed outages and hijacks from Cloudflare Radar and IODA
   - A routing forecast for each region, in the style of the shipping forecast
-  - Tap any network to see who it reaches the world through, and share a link to it
-  - Uses about 10 KB a second on a phone, and stops listening when you switch tabs
+  - See how any network connects to the rest of the internet
+  - Light on mobile data, at about 10 KB a second
+tags:
+  - Realtime
+  - Maps
+  - Internet
+  - Outages
 site: https://hearsay.peng.ly
 screenshots:
   - path: /

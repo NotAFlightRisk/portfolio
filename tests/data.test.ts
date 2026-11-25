@@ -1,6 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { parse } from 'yaml';
+import { tagSlug } from '#lib/site.ts';
 
 const read = (path: string) => parse(readFileSync(path, 'utf8'));
 const categories: { slug: string }[] = read('data/categories.yml');
@@ -12,6 +13,11 @@ describe.each(apps)('$name', (app) => {
   it('has the words every page needs', () => {
     for (const key of ['title', 'tagline', 'about']) expect(app[key], key).toBeTypeOf('string');
     expect(app.features.length).toBeGreaterThan(0);
+  });
+
+  it('has tags that make tidy links', () => {
+    expect(app.tags.length).toBeGreaterThan(0);
+    for (const tag of app.tags) expect(tag).toMatch(/^[A-Za-z0-9][A-Za-z0-9 -]*$/);
   });
 
   it('sits in a category that exists', () => {
@@ -47,6 +53,18 @@ it('gives every category at least one app', () => {
       apps.some((app) => app.category === slug),
       slug
     ).toBe(true);
+});
+
+it('never gives a tag a page all to itself', () => {
+  const tags: string[] = apps.flatMap((app) => app.tags);
+  for (const tag of new Set(tags)) {
+    expect(tags.filter((other) => other === tag).length, tag).toBeGreaterThan(1);
+  }
+});
+
+it('spells each tag the same way everywhere', () => {
+  const labels = new Set<string>(apps.flatMap((app) => app.tags));
+  expect(new Set([...labels].map(tagSlug)).size).toBe(labels.size);
 });
 
 it('has a share card for the pages without a screenshot of their own', () => {
