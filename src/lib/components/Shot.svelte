@@ -12,7 +12,7 @@
   const height = shotSizes.large * shotSizes.ratio;
 </script>
 
-<!-- a pair stays lazy, so the one your theme hides never gets downloaded -->
+<!-- lazy unless it's up top, so further down the twin your theme hides is never fetched -->
 {#each paired ? ['light', 'dark'] : ['light'] as theme (theme)}
   {@const path = theme === 'dark' ? shot.dark : shot.light}
   <img
@@ -24,7 +24,7 @@
     alt={shot.alt}
     width={shotSizes.large}
     {height}
-    loading={priority && !paired ? 'eager' : 'lazy'}
+    loading={priority ? 'eager' : 'lazy'}
     decoding="async"
     fetchpriority={priority ? 'high' : undefined}
   />

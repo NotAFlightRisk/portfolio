@@ -151,6 +151,26 @@
       color: var(--text-muted);
       font-size: var(--text-large);
     }
+
+    /* every slide the same height on a phone, so the dots sit snug under whichever is showing */
+    @media (width < 56rem) {
+      & h2 {
+        overflow: hidden;
+        font-size: var(--text-h2);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      & p {
+        display: -webkit-box;
+        min-height: 3lh;
+        overflow: hidden;
+        font-size: var(--text-base);
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+      }
+    }
   }
 
   .logo {

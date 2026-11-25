@@ -21,6 +21,7 @@
   let active = $state(0);
   let atStart = $state(true);
   let atEnd = $state(false);
+  let overflows = $state(true);
 
   // the distance from one slide to the next, gap and all
   const step = () => {
@@ -38,6 +39,7 @@
     const { scrollLeft, clientWidth, scrollWidth } = track!;
     atStart = scrollLeft < 4;
     atEnd = scrollLeft + clientWidth > scrollWidth - 4;
+    overflows = scrollWidth > clientWidth + 4;
     active = Math.round(scrollLeft / step());
   }
 
@@ -64,7 +66,7 @@
   </div>
 
   {#if items.length > 1}
-    <div class="controls">
+    <div class="controls" hidden={!overflows}>
       <button class="button raised" type="button" disabled={atStart} onclick={() => page(-1)}>
         <Previous aria-hidden="true" /><span class="visually-hidden">Previous</span>
       </button>
