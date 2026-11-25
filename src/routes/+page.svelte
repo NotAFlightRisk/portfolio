@@ -1,0 +1,222 @@
+<script lang="ts">
+  import { goto } from '$app/navigation';
+  import AppCard from '#lib/components/AppCard.svelte';
+  import AppLinks from '#lib/components/AppLinks.svelte';
+  import Browser from '#lib/components/Browser.svelte';
+  import Carousel from '#lib/components/Carousel.svelte';
+  import CategoryIcon from '#lib/components/CategoryIcon.svelte';
+  import JsonLd from '#lib/components/JsonLd.svelte';
+  import Shot from '#lib/components/Shot.svelte';
+  import { absolute } from '#lib/site.ts';
+  import Dice from '~icons/tabler/dice-5';
+  import Arrow from '~icons/tabler/arrow-right';
+
+  let { data } = $props();
+
+  const stars = $derived(data.all.reduce((sum, app) => sum + app.stars, 0));
+  const page = (app: { category: string; name: string }) => `/${app.category}/${app.name}`;
+  const surprise = () => goto(page(data.all[Math.floor(Math.random() * data.all.length)]));
+
+  const list = $derived({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Apps',
+    itemListElement: data.all.map((app, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: app.title,
+      url: absolute(page(app))
+    }))
+  });
+</script>
+
+<JsonLd data={list} />
+
+<section class="intro">
+  <h1>Portfolio</h1>
+  <p>
+    Every app I've built, all {data.all.length} of them. They're free, open source and mostly live on
+    peng.ly, with {stars} stars on GitHub between them.
+  </p>
+  <button class="button raised" type="button" onclick={surprise}>
+    <Dice aria-hidden="true" /> Show me a random one
+  </button>
+</section>
+
+<Carousel items={data.featured} label="Featured apps">
+  {#snippet slide(app, i)}
+    <article class="feature">
+      <div class="copy">
+        <img class="logo" src={app.logo} alt="" width="80" height="80" />
+        <h2><a href={page(app)}>{app.title}</a></h2>
+        <p>{app.tagline}</p>
+        <AppLinks {app} />
+      </div>
+      <a class="frame" href={page(app)} tabindex="-1" aria-hidden="true">
+        <Browser site={app.site}>
+          {#if app.screenshots[0]}
+            <Shot
+              shot={app.screenshots[0]}
+              sizes="(width < 56rem) 92vw, 50rem"
+              priority={i === 0}
+            />
+          {/if}
+        </Browser>
+      </a>
+    </article>
+  {/snippet}
+</Carousel>
+
+{#each data.shelves as shelf (shelf.slug)}
+  <section class="shelf">
+    <div class="heading">
+      <span class="icon"><CategoryIcon name={shelf.icon} /></span>
+      <h2><a href="/{shelf.slug}">{shelf.title}</a></h2>
+      <p>{shelf.description}</p>
+      <a class="button raised all" href="/{shelf.slug}">
+        All {shelf.apps.length}<span class="visually-hidden">
+          {shelf.title.toLowerCase()} apps
+        </span>
+        <Arrow aria-hidden="true" />
+      </a>
+    </div>
+    <Carousel items={shelf.apps} label={shelf.title} dots={false} peek>
+      {#snippet slide(app)}
+        <AppCard {app} />
+      {/snippet}
+    </Carousel>
+  </section>
+{/each}
+
+<style>
+  .intro {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-m);
+
+    & h1 {
+      font-size: var(--text-title);
+    }
+
+    & p {
+      max-width: var(--measure);
+      color: var(--text-muted);
+      font-size: var(--text-large);
+    }
+
+    /* title on the left, the blurb beside it, so the first app sits higher up the screen */
+    @media (width >= 64rem) {
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: center;
+      column-gap: var(--space-2xl);
+
+      & h1 {
+        grid-row: span 2;
+      }
+    }
+  }
+
+  .feature {
+    display: grid;
+    align-items: center;
+    gap: var(--space-l) var(--space-2xl);
+    padding: var(--space-xs);
+
+    @media (width >= 56rem) {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    }
+  }
+
+  .copy {
+    container-type: inline-size;
+    display: grid;
+    justify-items: start;
+    gap: var(--space-m);
+
+    & h2 {
+      font-size: var(--text-hero);
+
+      & a {
+        text-decoration: none;
+
+        @media (hover: hover) {
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    & p {
+      color: var(--text-muted);
+      font-size: var(--text-large);
+    }
+  }
+
+  .logo {
+    width: var(--logo-large);
+    height: var(--logo-large);
+
+    /* the screenshot's right above it on a phone, so the name does the job alone */
+    @media (width < 56rem) {
+      display: none;
+    }
+  }
+
+  .frame {
+    display: block;
+    text-decoration: none;
+
+    @media (width < 56rem) {
+      order: -1;
+    }
+  }
+
+  .shelf {
+    display: grid;
+    gap: var(--space-m);
+  }
+
+  .heading {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--space-2xs) var(--space-s);
+
+    & h2 {
+      font-size: var(--text-h2);
+
+      & a {
+        text-decoration: none;
+
+        @media (hover: hover) {
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    & p {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      max-width: var(--measure);
+      color: var(--text-muted);
+    }
+  }
+
+  .icon {
+    display: grid;
+    place-items: center;
+    width: var(--target);
+    height: var(--target);
+    border-radius: var(--radius);
+    background: var(--accent);
+    color: var(--on-accent);
+
+    & :global(svg) {
+      width: var(--icon);
+      height: var(--icon);
+    }
+  }
+</style>
