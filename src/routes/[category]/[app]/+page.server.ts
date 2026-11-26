@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { apps, category } from '#lib/server/catalogue.ts';
+import { apps, category, shelf } from '#lib/server/catalogue.ts';
 import { readme } from '#lib/server/readme.ts';
 import { shotSizes } from '#lib/site.ts';
 
@@ -12,7 +12,7 @@ export const load = async ({ params }) => {
   if (!app) error(404, 'No such app');
 
   const section = category(app.category)!;
-  const siblings = all.filter((other) => other.category === app.category);
+  const siblings = shelf(section, all);
   const at = siblings.indexOf(app);
   const where = app.site ? `, live at ${new URL(app.site).host}` : '';
 

@@ -1,0 +1,27 @@
+title: Leaves on the Line
+category: data-visualisation
+tagline: Why Britain's trains were late, cause by cause
+about: >-
+  Network Rail puts a cause on every delay, from signal failures to swans on the line, and
+  publishes the lot as open data that hardly anyone outside the industry reads. Leaves on the Line
+  turns it into a page for every station, route and operator, so you can see whether a bad week was
+  down to leaves, signals or the trains themselves.
+features:
+  - Delay by cause for every station, route and operator
+  - A map of where each kind of delay starts
+  - Month-by-month trends going back to April 2018
+  - The odd ones, like cows, trampolines and sunlight on signals
+  - Every figure as CSV and JSON, naming the file it came from
+tags:
+  - UK
+  - Transport
+  - Open data
+site: https://leaves.peng.ly
+screenshots:
+  - path: /
+    alt: The latest month for the whole network, up on last year, split between Network Rail's causes and the operators'
+  - path: /station/pad
+    alt: London Paddington's worst month for delays since April 2018, with its figures to download as CSV or JSON
+  - path: /map
+    alt: Where each cause of delay started across Britain, with Cardiff Central the worst place for it
+    wait: 6000

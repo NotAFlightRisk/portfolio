@@ -10,6 +10,7 @@ export type Category = {
   icon: string;
   schema: string;
   description: string;
+  apps?: string[];
 };
 
 export type Stats = {

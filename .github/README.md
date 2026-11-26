@@ -35,6 +35,8 @@ No key needed, and CORS is open. The [API page](https://portfolio.peng.ly/api) h
 
 To put it in the carousel up top, add `featured: true`, plus `order: 1` (2, 3 and so on) if you want it in a particular spot. Anything without an order goes after the ones with.
 
+Each category lists its apps most starred first. To set the order yourself, list them under `apps:` on the category in `data/categories.yml`, like Data visualisation does. Any it leaves out go on the end.
+
 Stars, language, licence and topics come from GitHub when it builds, and it rebuilds every morning to keep up.
 
 The screenshots script drives a headless Chromium. If Playwright can't find one, point `CHROMIUM_PATH` at it, or run `npx playwright-core install chromium` first.

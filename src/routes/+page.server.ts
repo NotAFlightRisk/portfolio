@@ -1,4 +1,4 @@
-import { apps, categories } from '#lib/server/catalogue.ts';
+import { apps, categories, shelf } from '#lib/server/catalogue.ts';
 import { site } from '#lib/site.ts';
 import type { App } from '#lib/types.ts';
 
@@ -10,10 +10,7 @@ export const load = async () => {
   return {
     all,
     featured: all.filter((app) => app.featured).sort((a, b) => place(a) - place(b)),
-    shelves: categories.map((category) => ({
-      ...category,
-      apps: all.filter((app) => app.category === category.slug)
-    })),
+    shelves: categories.map((category) => ({ ...category, apps: shelf(category, all) })),
     meta: {
       title: 'Peng.ly Portfolio - free and open source apps',
       description: `${site.description}. Try them out, or grab the code on GitHub.`

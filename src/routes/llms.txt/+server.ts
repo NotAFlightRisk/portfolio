@@ -1,16 +1,16 @@
 import { appUrl } from '#lib/server/api.ts';
-import { apps, categories } from '#lib/server/catalogue.ts';
+import { apps, categories, shelf } from '#lib/server/catalogue.ts';
 import { absolute, site } from '#lib/site.ts';
 
 export const prerender = true;
 
 export const GET = async () => {
   const all = await apps();
-  const sections = categories.map(({ slug, title, description }) => {
-    const lines = all
-      .filter((app) => app.category === slug)
-      .map((app) => `- [${app.title}](${appUrl(app)}): ${app.tagline}`);
-    return `## ${title}\n\n${description}.\n\n${lines.join('\n')}`;
+  const sections = categories.map((category) => {
+    const lines = shelf(category, all).map(
+      (app) => `- [${app.title}](${appUrl(app)}): ${app.tagline}`
+    );
+    return `## ${category.title}\n\n${category.description}.\n\n${lines.join('\n')}`;
   });
   const body = [
     `# ${site.name}`,

@@ -52,16 +52,26 @@ async function load(file: string, source: string): Promise<App> {
 
 let everything: Promise<App[]> | undefined;
 
+const byStars = (a: App, b: App) => b.stars - a.stars || a.title.localeCompare(b.title);
+
 /** Every app, most starred first */
 export function apps() {
   everything ??= Promise.all(
     Object.entries(files).map(([file, source]) => load(file, source))
-  ).then((list) => list.sort((a, b) => b.stars - a.stars || a.title.localeCompare(b.title)));
+  ).then((list) => list.sort(byStars));
   return everything;
 }
 
-export async function inCategory(slug: string) {
-  return (await apps()).filter((app) => app.category === slug);
+/** A category's apps, in the order it lists them, then the rest most starred first */
+export function shelf({ slug, apps: order = [] }: Category, all: App[]) {
+  const place = (app: App) => (order.includes(app.name) ? order.indexOf(app.name) : Infinity);
+  return all
+    .filter((app) => app.category === slug)
+    .sort((a, b) => place(a) - place(b) || byStars(a, b));
+}
+
+export async function inCategory(found: Category) {
+  return shelf(found, await apps());
 }
 
 export const category = (slug: string) => categories.find((category) => category.slug === slug);
