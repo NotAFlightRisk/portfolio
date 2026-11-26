@@ -11,6 +11,14 @@
   nav: Data viz
   icon: chart-dots-3
   description: Data that's hard to picture, drawn so you can see what's going on
+  apps:
+    - tubespotting
+    - afterlife
+    - hearsay
+    - carbonara
+    - floodpulse
+    - leaves-on-the-line
+    - track-the-gap
 
 - slug: other
   schema: DeveloperApplication
