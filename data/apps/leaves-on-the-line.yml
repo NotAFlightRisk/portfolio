@@ -9,7 +9,7 @@ about: >-
 features:
   - Delay by cause for every station, route and operator
   - A map of where each kind of delay starts
-  - Month by month trends going back to April 2018
+  - Month-by-month trends going back to April 2018
   - The odd ones, like cows, trampolines and sunlight on signals
   - Every figure as CSV and JSON, naming the file it came from
 tags:
