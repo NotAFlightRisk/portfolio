@@ -7,7 +7,9 @@
   const endpoints = [
     { path: '/api/apps.json', what: 'Every app, most starred first' },
     { path: '/api/apps/fineprint.json', what: 'One app, by its repo name' },
-    { path: '/api/categories.json', what: 'The categories, each with its apps in order' }
+    { path: '/api/categories.json', what: 'The categories, each with its apps in order' },
+    { path: '/api/tags.json', what: 'Every tag, the busiest first, each with its apps' },
+    { path: '/api/tags/open-data.json', what: "One tag's apps, most starred first" }
   ];
 </script>
 

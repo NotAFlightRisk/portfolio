@@ -33,6 +33,7 @@ export default defineConfig({
           '*',
           '/api/apps.json',
           '/api/categories.json',
+          '/api/tags.json',
           '/sitemap.xml',
           '/robots.txt',
           '/llms.txt'
