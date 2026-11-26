@@ -4,7 +4,7 @@ import { parse } from 'yaml';
 import { tagSlug } from '#lib/site.ts';
 
 const read = (path: string) => parse(readFileSync(path, 'utf8'));
-const categories: { slug: string }[] = read('data/categories.yml');
+const categories: { slug: string; apps?: string[] }[] = read('data/categories.yml');
 const slugs = categories.map(({ slug }) => slug);
 const names = readdirSync('data/apps').map((file) => file.replace(/\.yml$/, ''));
 const apps = names.map((name) => ({ name, ...read(`data/apps/${name}.yml`) }));
@@ -66,6 +66,14 @@ it('gives each ordered app a place of its own', () => {
   const places = apps.flatMap((app) => app.order ?? []);
   for (const place of places) expect(Number.isInteger(place) && place > 0, `${place}`).toBe(true);
   expect(new Set(places).size).toBe(places.length);
+});
+
+it('only orders apps that are in that category, once each', () => {
+  for (const { slug, apps: order = [] } of categories) {
+    const inside = apps.filter((app) => app.category === slug).map(({ name }) => name);
+    for (const name of order) expect(inside, slug).toContain(name);
+    expect(new Set(order).size, slug).toBe(order.length);
+  }
 });
 
 it('spells each tag the same way everywhere', () => {

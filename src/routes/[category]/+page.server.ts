@@ -6,7 +6,7 @@ export const entries = () => categories.map(({ slug }) => ({ category: slug }));
 export const load = async ({ params }) => {
   const found = category(params.category);
   if (!found) error(404, 'No such category');
-  const apps = await inCategory(found.slug);
+  const apps = await inCategory(found);
   return {
     category: found,
     apps,

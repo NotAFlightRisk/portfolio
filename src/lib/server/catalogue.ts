@@ -60,8 +60,14 @@ export function apps() {
   return everything;
 }
 
-export async function inCategory(slug: string) {
-  return (await apps()).filter((app) => app.category === slug);
+/** A category's apps, in the order it lists them, then the rest most starred first */
+export function shelf({ slug, apps: order = [] }: Category, all: App[]) {
+  const place = (app: App) => (order.includes(app.name) ? order.indexOf(app.name) : Infinity);
+  return all.filter((app) => app.category === slug).sort((a, b) => place(a) - place(b));
+}
+
+export async function inCategory(found: Category) {
+  return shelf(found, await apps());
 }
 
 export const category = (slug: string) => categories.find((category) => category.slug === slug);

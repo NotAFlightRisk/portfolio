@@ -1,6 +1,6 @@
 import { absolute, shotSizes } from '#lib/site.ts';
 import type { App, Category } from '#lib/types.ts';
-import { categories } from './catalogue.ts';
+import { categories, shelf } from './catalogue.ts';
 
 const sizes = (path: string) => ({
   small: absolute(`${path}-${shotSizes.small}.webp`),
@@ -49,5 +49,5 @@ export const apiCategory = (category: Category, apps: App[]) => ({
   title: category.title,
   description: category.description,
   url: absolute(`/${category.slug}`),
-  apps: apps.filter((app) => app.category === category.slug).map(({ name }) => name)
+  apps: shelf(category, apps).map(({ name }) => name)
 });
