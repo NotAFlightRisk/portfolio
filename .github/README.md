@@ -24,6 +24,8 @@ No key needed, and CORS is open. The [API page](https://portfolio.peng.ly/api) h
 | [`/api/apps.json`](https://portfolio.peng.ly/api/apps.json)                  | Every app, most starred first            |
 | [`/api/apps/<name>.json`](https://portfolio.peng.ly/api/apps/fineprint.json) | One app, by its repo name                |
 | [`/api/categories.json`](https://portfolio.peng.ly/api/categories.json)      | The categories, with their apps in order |
+| [`/api/tags.json`](https://portfolio.peng.ly/api/tags.json)                  | Every tag, busiest first, with its apps  |
+| [`/api/tags/<tag>.json`](https://portfolio.peng.ly/api/tags/open-data.json)  | One tag's apps, most starred first       |
 
 ---
 

@@ -51,3 +51,10 @@ export const apiCategory = (category: Category, apps: App[]) => ({
   url: absolute(`/${category.slug}`),
   apps: shelf(category, apps).map(({ name }) => name)
 });
+
+export const apiTag = (tag: { slug: string; title: string }, apps: App[]) => ({
+  slug: tag.slug,
+  title: tag.title,
+  url: absolute(`/tags/${tag.slug}`),
+  apps: apps.map(({ name }) => name)
+});
