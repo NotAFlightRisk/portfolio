@@ -34,7 +34,7 @@
         '@id': ids.author,
         name: site.author.name,
         url: site.author.url,
-        sameAs: [site.github, site.home.url]
+        sameAs: [site.github, site.mastodon, site.bluesky, site.home.url]
       },
       {
         '@type': 'WebPage',
@@ -80,6 +80,8 @@
   <meta property="og:image:height" content={String(image.height)} />
   <meta property="og:image:alt" content={image.alt} />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="fediverse:creator" content={site.fediverse} />
+  <link rel="me" href={site.mastodon} />
 </svelte:head>
 
 <JsonLd data={graph} />
