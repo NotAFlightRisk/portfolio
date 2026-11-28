@@ -7,6 +7,9 @@ export const site = {
   home: { name: 'Peng.ly', url: 'https://peng.ly' },
   blog: 'https://blog.peng.ly',
   github: 'https://github.com/NotAFlightRisk',
+  mastodon: 'https://mastodon.social/@NotAFlightRisk',
+  bluesky: 'https://bsky.app/profile/peng-ly.bsky.social',
+  fediverse: '@NotAFlightRisk@mastodon.social',
   repo: 'https://github.com/NotAFlightRisk/portfolio',
   description:
     'Free and open source apps that make hidden information easier to find, explore and understand',
