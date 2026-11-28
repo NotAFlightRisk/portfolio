@@ -8,7 +8,7 @@ export const site = {
   blog: 'https://blog.peng.ly',
   github: 'https://github.com/NotAFlightRisk',
   mastodon: 'https://mastodon.social/@NotAFlightRisk',
-  bluesky: 'https://bsky.app/profile/peng-ly.bsky.social',
+  bluesky: 'https://bsky.app/profile/peng.ly',
   fediverse: '@NotAFlightRisk@mastodon.social',
   repo: 'https://github.com/NotAFlightRisk/portfolio',
   description:
